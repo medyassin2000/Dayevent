@@ -1,3 +1,17 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+app_instrument_frontend :
+  path: /frontend
+  controller: App\Controller\InstrumentsController::frontIndex
+app_instrument_instrument :
+  path: /about
+  controller: App\Controller\InstrumentsController::instrumentIndex
+app_instrument_ajout :
+  path: /ajout
+  controller: App\Controller\InstrumentsController::ajout
+app_instrument_card :
+  path: /card
+  controller: App\Controller\InstrumentsController::card
+
+

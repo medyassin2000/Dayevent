@@ -1,0 +1,22 @@
+
+{% extends 'client.html.twig' %}
+
+
+{% block body %}
+    <h1></h1>
+    <div class="row">
+        {% for instrument in instruments %}
+            <div class="col-md-4">
+                <div class="card">
+                    {% set file_name = instrument.photo|split('/')|last %}
+                    <img class="card-img-top" src="{{ asset('images/products/' ~ file_name) }}" alt="{{ instrument.nom }}" width="20">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ instrument.nom }}</h5>
+                        <p class="card-text">{{ instrument.description }}</p>
+                        <p class="card-text">Prix : {{ instrument.prix }} €</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
