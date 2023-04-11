@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CommandeInstruments{% endblock %}
+
+{% block body %}
+    <h1>CommandeInstruments</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdCommande</th>
+                <td>{{ commande_instrument.idCommande }}</td>
+            </tr>
+            <tr>
+                <th>NomProduit</th>
+                <td>{{ commande_instrument.nomProduit }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ commande_instrument.prix }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ commande_instrument.date ? commande_instrument.date|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_commande_instruments_index') }}">back to list</a>
+
+    <a href="{{ path('app_commande_instruments_edit', {'idCommande': commande_instrument.idCommande}) }}">edit</a>
+
+    {{ include('commande_instruments/_delete_form.html.twig') }}
+{% endblock %}

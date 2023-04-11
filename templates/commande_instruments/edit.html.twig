@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit CommandeInstruments{% endblock %}
+
+{% block body %}
+    <h1>Edit CommandeInstruments</h1>
+
+    {{ include('commande_instruments/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_commande_instruments_index') }}">back to list</a>
+
+    {{ include('commande_instruments/_delete_form.html.twig') }}
+{% endblock %}

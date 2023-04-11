@@ -1,0 +1,47 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Instruments index{% endblock %}
+
+{% block body %}
+    <h1>Instruments index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdInstrument</th>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Photo</th>
+                <th>Description</th>
+                <th>nomCategorie</th>
+                <th>nomUser</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for instrument in instruments %}
+            <tr>
+                <td>{{ instrument.idInstrument }}</td>
+                <td>{{ instrument.nom }}</td>
+                <td>{{ instrument.prix }}</td>
+                <td>{{ instrument.photo }}</td>
+
+                <td>{{ instrument.description }}</td>
+
+                <td>{{ instrument.idCategorie.nomCategorie }}</td>
+
+                <td>
+                    <a href="{{ path('app_instruments_show', {'idInstrument': instrument.idInstrument}) }}">show</a>
+                    <a href="{{ path('app_instruments_edit', {'idInstrument': instrument.idInstrument}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_instruments_new') }}">Create new</a>
+{% endblock %}

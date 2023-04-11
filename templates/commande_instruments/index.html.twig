@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CommandeInstruments index{% endblock %}
+
+{% block body %}
+    <h1>CommandeInstruments index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdCommande</th>
+                <th>NomProduit</th>
+                <th>Prix</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commande_instrument in commande_instruments %}
+            <tr>
+                <td>{{ commande_instrument.idCommande }}</td>
+                <td>{{ commande_instrument.nomProduit }}</td>
+                <td>{{ commande_instrument.prix }}</td>
+                <td>{{ commande_instrument.date ? commande_instrument.date|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_commande_instruments_show', {'idCommande': commande_instrument.idCommande}) }}">show</a>
+                    <a href="{{ path('app_commande_instruments_edit', {'idCommande': commande_instrument.idCommande}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_commande_instruments_new') }}">Create new</a>
+{% endblock %}

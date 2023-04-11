@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New CommandeInstruments{% endblock %}
+
+{% block body %}
+    <h1>Create new CommandeInstruments</h1>
+
+    {{ include('commande_instruments/_form.html.twig') }}
+
+    <a href="{{ path('app_commande_instruments_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'back.html.twig' %}
+
+{% block body %}
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Ajouter un instrument</h2>
+
+            </div>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <div style="display:flex; align-items:center;justify-content: center ;  margin-bottom: 100px" >
+
+    <div class="row mt-5 justify-content-center" data-aos="fade-up">
+        <div class="col-lg-10">
+
+            {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+
+
+            <div class="row">
+
+                <div class="col-md-6 form-group" style="margin-bottom: 11px"  >
+                    {{ form_label(form.nom, null, {'label': 'Nom'}) }}
+                    {{ form_widget(form.nom,{'attr':{'class':'form-control'}}) }}
+                    {{ form_errors(form.nom) }}
+
+                </div>
+                <div class="form-group mt-3">
+                    {{ form_label(form.prix , null, {'label': 'Prix '}) }}
+                    {{ form_widget(form.prix ,{'attr':{'class':'form-control'}}) }}
+                    {{ form_errors(form.prix ) }}
+
+
+                </div>
+                <div class="form-group mt-3">
+                    {{ form_label(form.photo, null, {'label': 'photo '}) }}
+                    {{ form_widget(form.photo ,{'attr':{'class':'form-control'}}) }}
+                    {{ form_errors(form.photo) }}
+
+
+                </div>
+                <div class="form-group mt-3">
+                    {{ form_label(form.description , null, {'label': 'Description '}) }}
+                    {{ form_widget(form.description ,{'attr':{'class':'form-control'}}) }}
+                    {{ form_errors(form.description ) }}
+
+
+                </div>
+            </div>
+            <div class="form-group mt-3">
+                {{ form_label(form.idCategorie , null, {'label': 'idCategorie '}) }}
+                {{ form_widget(form.idCategorie ,{'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.idCategorie) }}
+
+
+
+        </div>
+        <div class="form-group mt-3">
+            {{ form_label(form.idUtilisateur , null, {'label': 'Id utilisateur '}) }}
+            {{ form_widget(form.idUtilisateur ,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.idUtilisateur )}}
+
+
+        </div>
+
+
+
+
+
+                <div class="text-center" >
+
+                    <button type="submit" style="background-color: #1bbd36 ;
+                     padding: 10px 24px ;
+                     color: #fff;
+                     transition: 0.4s;
+                     border: 0;
+                     border-radius: 4px;">Ajouter</button>
+
+
+                </div>
+
+                {{ form_end (form) }}
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+{% endblock  %}
