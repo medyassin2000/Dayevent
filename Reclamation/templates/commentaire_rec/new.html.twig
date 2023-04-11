@@ -1,0 +1,11 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}New CommentaireRec{% endblock %}
+
+{% block body %}
+    <h1>Create new CommentaireRec</h1>
+
+    {{ include('commentaire_rec/_form.html.twig') }}
+
+    <a href="{{ path('app_commentaire_rec_index') }}">back to list</a>
+{% endblock %}

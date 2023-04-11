@@ -1,0 +1,39 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}CommentaireRec index{% endblock %}
+
+{% block body %}
+    <h1>La table des Commentaires :</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdComm</th>
+                <th>DateComm</th>
+                <th>Contenu</th>
+                 <th>Titre du Reclamation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commentaire_rec in commentaire_recs %}
+            <tr>
+                <td>{{ commentaire_rec.idComm }}</td>
+                <td>{{ commentaire_rec.dateComm ? commentaire_rec.dateComm|date('Y-m-d') : '' }}</td>
+                <td>{{ commentaire_rec.contenu }}</td>
+                <td>{{ commentaire_rec.idRec.titre }}</td>
+                <td>
+                    <a href="{{ path('app_commentaire_rec_show', {'idComm': commentaire_rec.idComm}) }}">show</a>
+                    <a href="{{ path('app_commentaire_rec_edit', {'idComm': commentaire_rec.idComm}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_commentaire_rec_new') }}">Create new</a>
+{% endblock %}

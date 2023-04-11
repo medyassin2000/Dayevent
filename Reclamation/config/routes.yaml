@@ -1,0 +1,11 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+app_reclamation_frontend : 
+  path: /frontend
+  controller: App\Controller\ReclamationController::frontIndex
+app_reclamation_contact: 
+  path: /contact
+  controller: App\Controller\ReclamationController::contactIndex
+   
+  

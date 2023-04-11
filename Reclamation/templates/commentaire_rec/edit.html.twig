@@ -1,0 +1,13 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Edit CommentaireRec{% endblock %}
+
+{% block body %}
+    <h1>Edit CommentaireRec</h1>
+
+    {{ include('commentaire_rec/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_commentaire_rec_index') }}">back to list</a>
+
+    {{ include('commentaire_rec/_delete_form.html.twig') }}
+{% endblock %}
