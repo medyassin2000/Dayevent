@@ -1,0 +1,40 @@
+{% extends 'back.html.twig' %}
+
+
+{% block title %} CommandeTicket index {% endblock %}
+
+{% block body %}
+    <h1>CommandeTicket index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomEvenement</th>
+                <th>Prix</th>
+                <th>IdTicket</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commande_ticket in commande_tickets %}
+            <tr>
+                <td>{{ commande_ticket.id }}</td>
+                <td>{{ commande_ticket.nomEvenement }}</td>
+                <td>{{ commande_ticket.prix }}</td>
+                <td>{{ commande_ticket.idTicket }}</td>
+                <td>
+                    <a href="{{ path('app_commande_ticket_show', {'id': commande_ticket.id}) }}">show</a>
+                    <a href="{{ path('app_commande_ticket_edit', {'id': commande_ticket.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_commande_ticket_new') }}">Create new</a>
+{% endblock %}

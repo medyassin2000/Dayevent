@@ -1,0 +1,35 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Ticket index {% endblock %}
+
+{% block body %}
+
+    
+
+    <div class="container">
+    <h1>Ticket index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Prix</th>
+                <th scope="col">NbTickets</th>
+                <th scope="col">Type</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ticket in tickets %}
+            <tr>
+                <td>{{ ticket.prix }}</td>
+                <td>{{ ticket.nbTickets }}</td>
+                <td>{{ ticket.type }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}
