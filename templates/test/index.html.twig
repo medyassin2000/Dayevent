@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+
+<div class="row" style="display: flex;align-items: center;justify-content: center;margin-top: 150px;">
+
+    <div class="col-lg-6">
+
+        <div class="card">
+            <div class="card-body">
+            
+
+                <!-- Table with stripped rows -->
+                <table class="table table-striped">
+                    <thead>
+                    <tr>     <th>Nom</th>
+                        <th>Lieu</th>
+                        <th>Date</th>
+                        <th>Nb Ticket</th>
+                        <th>Prix</th>
+                        <th>Affiche</th>
+                        <th>Modification</th>
+                        <th>Suppression</th>
+                 
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for eve in b %}
+                        <tr>
+                            <td>{{ eve.Nom }}</td>
+                            <td>{{ eve.Lieu }}</td>
+                            <td>{{ eve.date|date('Y-m-d') }}</td>
+                            <td>{{ eve.nb_ticket }}</td>
+                            <td>{{ eve.prix }}</td>
+                            <td>{{ eve.affiche }}</td>
+                          <td>
+                                <a class="btn btn-success" href="{{ path('modif_event',{'id':eve.id}) }}">Modifier</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-danger" href="{{ path('supp_event',{'id':eve.id}) }}">Supprimer</a>
+                            </td>
+                            
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+                <!-- End small tables -->
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+{% endblock %}

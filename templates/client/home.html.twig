@@ -1,0 +1,65 @@
+{% extends 'baseclient.html.twig' %}
+{% block body %}
+    <!-- Header Section End -->
+
+    <!-- Hero Section Begin -->
+    <section class="hero spad set-bg" data-setbg="frontend/img/samara_cover.png">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="hero__text">
+                        <span>New single</span>
+                        <h1>Lii</h1>
+                        <a href="https://www.youtube.com/watch?v=gZqpMHk_V2I" class="play-btn video-popup"><i class="fa fa-play"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="linear__icon">
+            <i class="fa fa-angle-double-down"></i>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Event Section Begin -->
+    <section class="event spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Les Evenement a venir</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 500px;">
+                <div class="event__slider owl-carousel">
+                 {% for eve in b %}
+                    <div class="col-lg-4">
+                   <div class="section-title">
+                        <h2>{{eve.Nom}}</h2>
+                    </div>
+                        <div class="event__item">
+                           
+                            <a href="{{ path('eventpage',{'id':eve.id}) }}">
+                            <div class="event__item__pic set-bg" data-setbg="{{ eve.affiche }}">
+                     
+                                <div class="tag-date">
+                                    <span>{{ eve.date|date('Y-m-d') }}</span>
+                                </div>
+                            </div></a>
+                          
+                            <div class="event__item__text">
+                                <h4>{{ eve.Nom }}</h4>
+                                <p><i class="fa fa-map-marker"></i> {{ eve.Lieu }}</p>
+                            </div>
+                           
+                        </div>
+                        </div>
+                    {% endfor %}
+                    
+                    </div>
+                    </div>
+                </section>
+                 
+
+    {% endblock %}

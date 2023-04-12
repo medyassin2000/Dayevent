@@ -1,0 +1,81 @@
+{% extends 'baseclient.html.twig' %}
+{% block body %}
+<!-- Header Section End -->
+
+    <!-- Countdown Section Begin -->
+    <section class="countdown countdown--page spad set-bg" data-setbg="frontend/img/soolking_cover.png">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="countdown__text">
+                        <h1>Soolking Festival</h1>
+                        <h4>Festival start in</h4>
+                    </div>
+                    <div class="countdown__timer" id="countdown-time">
+                        <div class="countdown__item">
+                            <span>20</span>
+                            <p>days</p>
+                        </div>
+                        <div class="countdown__item">
+                            <span>45</span>
+                            <p>hours</p>
+                        </div>
+                        <div class="countdown__item">
+                            <span>18</span>
+                            <p>minutes</p>
+                        </div>
+                        <div class="countdown__item">
+                            <span>09</span>
+                            <p>seconds</p>
+                        </div>
+                    </div>
+                    <div class="buy__tickets">
+                        <a href="{{ path('eventpage',{'id':43}) }}" class="primary-btn">Acheter tickets</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Countdown Section End -->
+
+    <!-- Tours Section Begin -->
+    <section class="tours spad">
+        <div class="container">
+            <div class="row" style="margin-bottom: 500px;">
+           
+            {% for eve in b %}
+           
+                <div class="col-lg-6 order-lg-1">
+                    <div class="tours__item__text">
+                        <h2>{{ eve.Nom }}</h2>
+                        <div class="tours__item__pic">
+                        <img src="{{ eve.affiche }}">
+                    </div>
+                        <div class="tours__text__widget">
+                            <ul>
+                                <li>
+                                    <i class="fa fa-clock-o"></i>
+                                    
+                                    <span>{{ eve.date|date('Y-m-d') }}</span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-map-marker"></i>
+                                    {{ eve.Lieu }}
+                                </li>
+                            </ul>
+                            <div class="price">{{ eve.prix }} DT </div>
+                        </div>
+                        
+                        
+                        <a href="{{ path('eventpage',{'id':eve.id}) }}" class="primary-btn border-btn">Acheter tickets</a>
+                    </div>
+                </div>
+                
+                
+                {% endfor %}
+               
+        </div>
+         </div>
+    </section>
+    <!-- Tours Section End -->
+    {% endblock %}
