@@ -1,0 +1,45 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Music index{% endblock %}
+
+{% block body %}
+    <h1>Music index</h1>
+    
+       
+    <table class="table" class="table datatable datatable-table">
+        <thead>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomMorceaux</th>
+                <th>NomArtiste</th>
+                <th>Fichier</th>
+                   <th>Show</th>
+                     <th>Update</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for music in music %}
+            <tr>
+                <td>{{ music.id }}</td>
+                <td>{{ music.nomMorceaux }}</td>
+                <td>{{ music.nomArtiste }}</td>
+                <td>{{ music.fichier }}</td>
+                <td>
+                   <div class="form-group">   <a href="{{ path('app_music_show', {'id': music.id}) }}"   class="btn btn-primary">show</a></div>
+                    
+                </td>
+                <td>
+     <div class="form-group">  <a href="{{ path('app_music_edit', {'id': music.id}) }}"  class="btn btn-primary">edit</a>   <div class="form-group">
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+ 
+      <div class="form-group"> <a href="{{ path('app_music_new') }}"  class="btn btn-primary">Create new</a>   <div class="form-group">
+{% endblock %}
