@@ -3,37 +3,40 @@
 {% block title %}Instruments{% endblock %}
 
 {% block body %}
-    <h1>Instruments</h1>
 
-    <table class="table">
+    <h1>Instruments</h1>
+<div class="container">
+    <table class="table table-bordered border-primary">
         <tbody>
             <tr>
                 <th>IdInstrument</th>
-                <td>{{ instrument.idInstrument }}</td>
+                <td>{{ instruments.idInstrument }}</td>
             </tr>
             <tr>
                 <th>Nom</th>
-                <td>{{ instrument.nom }}</td>
+                <td>{{ instruments.nom }}</td>
             </tr>
             <tr>
                 <th>Prix</th>
-                <td>{{ instrument.prix }}</td>
+                <td>{{ instruments.prix }}</td>
             </tr>
-            <tr>
-                <th>Photo</th>
+
+
+
 
 
             </tr>
             <tr>
                 <th>Description</th>
-                <td>{{ instrument.description }}</td>
+                <td>{{ instruments.description }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_instruments_index') }}">back to list</a>
+    <a href="{{ path('app_instruments_index') }}"><button type="button" class="btn btn-primary">retour</button></a>
 
-    <a href="{{ path('app_instruments_edit', {'idInstrument': instrument.idInstrument}) }}">edit</a>
+    <a href="{{ path('app_instruments_edit', {'idInstrument': instruments.idInstrument}) }}"><button type="button" class="btn btn-info">Edit</button></a>
 
     {{ include('instruments/_delete_form.html.twig') }}
+</div>
 {% endblock %}

@@ -23,7 +23,7 @@ class InstrumentsType extends AbstractType
             ])
             ->add('description')
             ->add('idCategorie')
-            ->add('idUtilisateur')
+
             ->add('idCategorie', EntityType::class, [
                 'class' => CategorieInstrument::class,
                 'choice_label' => function (CategorieInstrument $categorieInstrument) {

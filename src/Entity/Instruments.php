@@ -100,7 +100,7 @@ class Instruments
     public function getPhoto(): ?string
     {
         if ($this->photo) {
-            return '/public/images/products/' . $this->photo;
+            return  $this->photo;
         }
 
         return null;

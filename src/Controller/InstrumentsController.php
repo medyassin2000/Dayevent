@@ -45,7 +45,7 @@ class InstrumentsController extends AbstractController
                 $fileName = uniqid() . '.' . $file->guessExtension();
                 try {
                     $file->move(
-                        $this->getParameter('kernel.project_dir') . '/public/images/products',
+                        $this->getParameter('kernel.project_dir') . '/images/products',
                         $fileName
                     );
 
@@ -55,9 +55,9 @@ class InstrumentsController extends AbstractController
                     $instrumentsRepository->save($instrument, true);
 
                     // Ajouter le chemin complet de la photo dans la base de données
-                    $photoFullPath = $this->getParameter('kernel.project_dir') . '/public' . $photoPath;
-                    $instrument->setPhoto($photoFullPath);
-                    $instrumentsRepository->save($instrument, true);
+                    //$photoFullPath = $this->getParameter('kernel.project_dir') . '/public' . $photoPath;
+                    //$instrument->setPhoto($photoFullPath);
+                    //$instrumentsRepository->save($instrument, true);
 
                 } catch (FileException $e) {
                     // Gérer les erreurs de téléchargement du fichier
@@ -77,27 +77,30 @@ class InstrumentsController extends AbstractController
     public function show(Instruments $instrument): Response
     {
         return $this->render('instruments/show.html.twig', [
-            'instrument' => $instrument,
+            'instruments' => $instrument,
         ]);
     }
 
     #[Route('/{idInstrument}/edit', name: 'app_instruments_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Instruments $instrument, InstrumentsRepository $instrumentsRepository, EntityManagerInterface $entityManager, UploadHandler $uploadHandler): Response
+    public function edit(Request $request,instruments $instruments ,InstrumentsRepository $instrumentsRepository, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(InstrumentsType::class, $instrument);
+        $form = $this->createForm(InstrumentsType::class, $instruments);
         $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
 
 
             return $this->redirectToRoute('app_instruments_index', [], Response::HTTP_SEE_OTHER);
+        }
 
+            return $this->renderForm('instruments/edit.html.twig', [
+                'instruments' => $instruments,
+                'form' => $form,
+            ]);
+        }
 
-        return $this->renderForm('instruments/edit.html.twig', [
-            'instrument' => $instrument,
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{idInstrument}', name: 'app_instruments_delete', methods: ['POST'])]
+        #[
+        Route('/{idInstrument}', name: 'app_instruments_delete', methods: ['POST'])]
     public function delete(Request $request, Instruments $instrument, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete' . $instrument->getIdInstrument(), $request->request->get('_token'))) {
@@ -133,9 +136,9 @@ class InstrumentsController extends AbstractController
                     $instrumentsRepository->save($instrument, true);
 
                     // Ajouter le chemin complet de la photo dans la base de données
-                    $photoFullPath = $this->getParameter('kernel.project_dir') . '/public' . $photoPath;
-                    $instrument->setPhoto($photoFullPath);
-                    $instrumentsRepository->save($instrument, true);
+                    //$photoFullPath = $this->getParameter('kernel.project_dir') . '/public' . $photoPath;
+                    //$instrument->setPhoto($photoFullPath);
+                    //$instrumentsRepository->save($instrument, true);
 
                 } catch (FileException $e) {
                     // Gérer les erreurs de téléchargement du fichier
