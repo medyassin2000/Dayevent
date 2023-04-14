@@ -60,16 +60,16 @@ class __TwigTemplate_25ba351366e24ddddad21f09d2584a11 extends Template
         $this->displayBlock('stylesheets', $context, $blocks);
         // line 26
         $this->displayBlock('header', $context, $blocks);
-        // line 70
+        // line 68
         $this->displayBlock('body', $context, $blocks);
-        // line 75
+        // line 73
         $this->displayBlock('footer', $context, $blocks);
-        // line 81
+        // line 79
         echo "    <!-- Footer Section End -->
 ";
-        // line 82
+        // line 80
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 98
+        // line 96
         echo "</body>
 
 </html>";
@@ -185,8 +185,6 @@ class __TwigTemplate_25ba351366e24ddddad21f09d2584a11 extends Template
         // line 50
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_commande_ticket_newF");
         echo "\">Commande Ticket</a></li>
-                            
-                                <li><a href=\"./\">Contact</a></li>
                             </ul>
                         </nav>
                         <div class=\"header__right__social\">
@@ -212,7 +210,7 @@ class __TwigTemplate_25ba351366e24ddddad21f09d2584a11 extends Template
 
     }
 
-    // line 70
+    // line 68
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -222,7 +220,7 @@ class __TwigTemplate_25ba351366e24ddddad21f09d2584a11 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 71
+        // line 69
         echo "
 
 
@@ -235,7 +233,7 @@ class __TwigTemplate_25ba351366e24ddddad21f09d2584a11 extends Template
 
     }
 
-    // line 75
+    // line 73
     public function block_footer($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -245,7 +243,7 @@ class __TwigTemplate_25ba351366e24ddddad21f09d2584a11 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
 
-        // line 76
+        // line 74
         echo "    <footer class=\"footer spad set-bg\" data-setbg=\"public/frontend/img/footer-bg.png\" style=\"background-image: url(&quot;img/footer-bg.png&quot;);\">
         <div class=\"container\">
             </div>
@@ -259,7 +257,7 @@ class __TwigTemplate_25ba351366e24ddddad21f09d2584a11 extends Template
 
     }
 
-    // line 82
+    // line 80
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -269,52 +267,52 @@ class __TwigTemplate_25ba351366e24ddddad21f09d2584a11 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 83
+        // line 81
         echo "    <!-- Js Plugins -->
     <script src=\"";
-        // line 84
+        // line 82
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontend/js/jquery-3.3.1.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 85
+        // line 83
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontend/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 86
+        // line 84
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontend/js/jquery.magnific-popup.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 87
+        // line 85
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontend/js/jquery.nicescroll.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 88
+        // line 86
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontend/js/jquery.barfiller.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 89
+        // line 87
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontend/js/jquery.countdown.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 90
+        // line 88
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontend/js/jquery.slicknav.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 91
+        // line 89
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontend/js/owl.carousel.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 92
+        // line 90
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontend/js/main.js"), "html", null, true);
         echo "\"></script>
 
     <!-- Music Plugin -->
     <script src=\"";
-        // line 95
+        // line 93
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontend/js/jquery.jplayer.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 96
+        // line 94
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("frontend/js/jplayerInit.js"), "html", null, true);
         echo "\"></script>
     ";
@@ -333,7 +331,7 @@ class __TwigTemplate_25ba351366e24ddddad21f09d2584a11 extends Template
 
     public function getDebugInfo()
     {
-        return array (  318 => 96,  314 => 95,  308 => 92,  304 => 91,  300 => 90,  296 => 89,  292 => 88,  288 => 87,  284 => 86,  280 => 85,  276 => 84,  273 => 83,  263 => 82,  249 => 76,  239 => 75,  226 => 71,  216 => 70,  186 => 50,  181 => 48,  158 => 27,  148 => 26,  136 => 24,  132 => 23,  128 => 22,  124 => 21,  120 => 20,  116 => 19,  112 => 18,  108 => 17,  104 => 16,  98 => 13,  95 => 12,  85 => 11,  73 => 98,  71 => 82,  68 => 81,  66 => 75,  64 => 70,  62 => 26,  60 => 11,  48 => 1,);
+        return array (  316 => 94,  312 => 93,  306 => 90,  302 => 89,  298 => 88,  294 => 87,  290 => 86,  286 => 85,  282 => 84,  278 => 83,  274 => 82,  271 => 81,  261 => 80,  247 => 74,  237 => 73,  224 => 69,  214 => 68,  186 => 50,  181 => 48,  158 => 27,  148 => 26,  136 => 24,  132 => 23,  128 => 22,  124 => 21,  120 => 20,  116 => 19,  112 => 18,  108 => 17,  104 => 16,  98 => 13,  95 => 12,  85 => 11,  73 => 96,  71 => 80,  68 => 79,  66 => 73,  64 => 68,  62 => 26,  60 => 11,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -388,8 +386,6 @@ class __TwigTemplate_25ba351366e24ddddad21f09d2584a11 extends Template
                                 <li class=\"active\"><a href=\"{{ path('app_ticket_indexF') }}\">Tickets</a></li>
                                 
                                 <li><a href=\"{{ path('app_commande_ticket_newF') }}\">Commande Ticket</a></li>
-                            
-                                <li><a href=\"./\">Contact</a></li>
                             </ul>
                         </nav>
                         <div class=\"header__right__social\">

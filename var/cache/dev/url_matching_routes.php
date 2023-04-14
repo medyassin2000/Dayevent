@@ -25,30 +25,28 @@ return [
                 .'|/commande/ticket/(?'
                     .'|([^/]++)(*:35)'
                     .'|F/([^/]++)(*:52)'
-                    .'|([^/]++)(?'
-                        .'|/edit(*:75)'
-                        .'|(*:82)'
-                    .')'
-                    .'|F/([^/]++)(*:100)'
+                    .'|([^/]++)/edit(*:72)'
+                    .'|F/([^/]++)/edit(*:94)'
+                    .'|([^/]++)(*:109)'
                 .')'
                 .'|/ticket/([^/]++)(?'
-                    .'|(*:128)'
-                    .'|/edit(*:141)'
-                    .'|(*:149)'
+                    .'|(*:137)'
+                    .'|/edit(*:150)'
+                    .'|(*:158)'
                 .')'
                 .'|/_(?'
-                    .'|error/(\\d+)(?:\\.([^/]++))?(*:189)'
-                    .'|wdt/([^/]++)(*:209)'
+                    .'|error/(\\d+)(?:\\.([^/]++))?(*:198)'
+                    .'|wdt/([^/]++)(*:218)'
                     .'|profiler/([^/]++)(?'
                         .'|/(?'
-                            .'|search/results(*:255)'
-                            .'|router(*:269)'
+                            .'|search/results(*:264)'
+                            .'|router(*:278)'
                             .'|exception(?'
-                                .'|(*:289)'
-                                .'|\\.css(*:302)'
+                                .'|(*:298)'
+                                .'|\\.css(*:311)'
                             .')'
                         .')'
-                        .'|(*:312)'
+                        .'|(*:321)'
                     .')'
                 .')'
             .')/?$}sDu',
@@ -56,19 +54,19 @@ return [
     [ // $dynamicRoutes
         35 => [[['_route' => 'app_commande_ticket_show', '_controller' => 'App\\Controller\\CommandeTicketController::show'], ['id'], ['GET' => 0], null, false, true, null]],
         52 => [[['_route' => 'app_commande_ticket_showF', '_controller' => 'App\\Controller\\CommandeTicketController::showF'], ['id'], ['GET' => 0], null, false, true, null]],
-        75 => [[['_route' => 'app_commande_ticket_edit', '_controller' => 'App\\Controller\\CommandeTicketController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        82 => [[['_route' => 'app_commande_ticket_delete', '_controller' => 'App\\Controller\\CommandeTicketController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        100 => [[['_route' => 'app_commande_ticket_deleteF', '_controller' => 'App\\Controller\\CommandeTicketController::deleteF'], ['id'], ['POST' => 0], null, false, true, null]],
-        128 => [[['_route' => 'app_ticket_show', '_controller' => 'App\\Controller\\TicketController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        141 => [[['_route' => 'app_ticket_edit', '_controller' => 'App\\Controller\\TicketController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        149 => [[['_route' => 'app_ticket_delete', '_controller' => 'App\\Controller\\TicketController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        189 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
-        209 => [[['_route' => '_wdt', '_controller' => 'web_profiler.controller.profiler::toolbarAction'], ['token'], null, null, false, true, null]],
-        255 => [[['_route' => '_profiler_search_results', '_controller' => 'web_profiler.controller.profiler::searchResultsAction'], ['token'], null, null, false, false, null]],
-        269 => [[['_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'], ['token'], null, null, false, false, null]],
-        289 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
-        302 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
-        312 => [
+        72 => [[['_route' => 'app_commande_ticket_edit', '_controller' => 'App\\Controller\\CommandeTicketController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        94 => [[['_route' => 'app_commande_ticket_editF', '_controller' => 'App\\Controller\\CommandeTicketController::editF'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        109 => [[['_route' => 'app_commande_ticket_delete', '_controller' => 'App\\Controller\\CommandeTicketController::deleteF'], ['id'], ['POST' => 0], null, false, true, null]],
+        137 => [[['_route' => 'app_ticket_show', '_controller' => 'App\\Controller\\TicketController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        150 => [[['_route' => 'app_ticket_edit', '_controller' => 'App\\Controller\\TicketController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        158 => [[['_route' => 'app_ticket_delete', '_controller' => 'App\\Controller\\TicketController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        198 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
+        218 => [[['_route' => '_wdt', '_controller' => 'web_profiler.controller.profiler::toolbarAction'], ['token'], null, null, false, true, null]],
+        264 => [[['_route' => '_profiler_search_results', '_controller' => 'web_profiler.controller.profiler::searchResultsAction'], ['token'], null, null, false, false, null]],
+        278 => [[['_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'], ['token'], null, null, false, false, null]],
+        298 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
+        311 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
+        321 => [
             [['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

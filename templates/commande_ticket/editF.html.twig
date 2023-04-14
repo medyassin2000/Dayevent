@@ -1,0 +1,12 @@
+{% extends 'front.html.twig' %}
+
+{% block title %} Edit CommandeTicket {% endblock %}
+
+{% block body %}
+    <h1>Edit CommandeTicket</h1>
+
+    {{ include('commande_ticket/_form.html.twig', {'button_label': 'Update', 'id': commande_ticket.id}) }}
+
+    <a href="{{ path('app_commande_ticket_showF', {'id': commande_ticket.id}) }}">back to list</a>
+
+{% endblock %}

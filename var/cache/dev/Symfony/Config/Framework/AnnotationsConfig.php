@@ -17,7 +17,7 @@ class AnnotationsConfig
     private $_usedProperties = [];
 
     /**
-     * @default true
+     * @default false
      * @param ParamConfigurator|bool $value
      * @return $this
      */
@@ -30,7 +30,7 @@ class AnnotationsConfig
     }
 
     /**
-     * @default 'php_array'
+     * @default 'none'
      * @param ParamConfigurator|mixed $value
      * @return $this
      */

@@ -119,14 +119,11 @@ class __TwigTemplate_9f2faa11387221ea9a81d4e4d2af469c extends Template
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_commande_ticket_newF");
         echo "\">back</a>
 
-    ";
-        // line 28
-        echo "
-    ";
-        // line 29
-        echo twig_include($this->env, $context, "commande_ticket/_delete_form.html.twig");
-        echo "
-    </div>
+    <a href=\"";
+        // line 27
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_commande_ticket_editF", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["commande_ticket"]) || array_key_exists("commande_ticket", $context) ? $context["commande_ticket"] : (function () { throw new RuntimeError('Variable "commande_ticket" does not exist.', 27, $this->source); })()), "id", [], "any", false, false, false, 27)]), "html", null, true);
+        echo "\">edit</a>
+        </div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -148,7 +145,7 @@ class __TwigTemplate_9f2faa11387221ea9a81d4e4d2af469c extends Template
 
     public function getDebugInfo()
     {
-        return array (  127 => 29,  124 => 28,  119 => 25,  111 => 20,  104 => 16,  97 => 12,  88 => 5,  78 => 4,  59 => 2,  36 => 1,);
+        return array (  124 => 27,  119 => 25,  111 => 20,  104 => 16,  97 => 12,  88 => 5,  78 => 4,  59 => 2,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -179,10 +176,8 @@ class __TwigTemplate_9f2faa11387221ea9a81d4e4d2af469c extends Template
 
     <a href=\"{{ path('app_commande_ticket_newF') }}\">back</a>
 
-    {#<a href=\"{{ path('app_commande_ticket_edit', {'id': commande_ticket.id}) }}\">edit</a>#}
-
-    {{ include('commande_ticket/_delete_form.html.twig') }}
-    </div>
+    <a href=\"{{ path('app_commande_ticket_editF', {'id': commande_ticket.id}) }}\">edit</a>
+        </div>
 {% endblock %}
 ", "commande_ticket/showF.html.twig", "C:\\Users\\hedit\\Desktop\\1.Projet_Symfony\\dayevent\\templates\\commande_ticket\\showF.html.twig");
     }

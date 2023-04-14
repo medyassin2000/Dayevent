@@ -73,7 +73,6 @@ class CommandeTicketController extends AbstractController
             'commande_ticket' => $commandeTicket,
         ]);
     }
-
     #[Route('/F/{id}', name: 'app_commande_ticket_showF', methods: ['GET'])]
     public function showF(CommandeTicket $commandeTicket): Response
     {
@@ -91,10 +90,30 @@ class CommandeTicketController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
+            
             return $this->redirectToRoute('app_commande_ticket_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('commande_ticket/edit.html.twig', [
+            'commande_ticket' => $commandeTicket,
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/F/{id}/edit', name: 'app_commande_ticket_editF', methods: ['GET', 'POST'])]
+    public function editF(Request $request, CommandeTicket $commandeTicket, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(CommandeTicketType::class, $commandeTicket);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            $ticketId = $commandeTicket->getId();
+            return $this->redirectToRoute('app_commande_ticket_showF', ['id' => $ticketId], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('commande_ticket/editF.html.twig', [
             'commande_ticket' => $commandeTicket,
             'form' => $form,
         ]);
@@ -111,7 +130,7 @@ class CommandeTicketController extends AbstractController
         return $this->redirectToRoute('app_commande_ticket_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    #[Route('/F/{id}', name: 'app_commande_ticket_deleteF', methods: ['POST'])]
+    #[Route('/{id}', name: 'app_commande_ticket_delete', methods: ['POST'])]
     public function deleteF(Request $request, CommandeTicket $commandeTicket, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$commandeTicket->getId(), $request->request->get('_token'))) {

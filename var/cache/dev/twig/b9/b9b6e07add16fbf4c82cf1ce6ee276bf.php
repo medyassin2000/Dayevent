@@ -63,10 +63,7 @@ class __TwigTemplate_2fbf557a760d1626c5a72df1ef020f2f extends Template
   <header id=\"header\" class=\"header fixed-top d-flex align-items-center\">
 
     <div class=\"d-flex align-items-center justify-content-between\">
-      <a href=\"";
-        // line 41
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("index.html"), "html", null, true);
-        echo "\" class=\"logo d-flex align-items-center\">
+      <a href=\"\" class=\"logo d-flex align-items-center\">
         <img src=\"";
         // line 42
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Admin/assets/img/logo1.png"), "html", null, true);
@@ -546,7 +543,7 @@ class __TwigTemplate_2fbf557a760d1626c5a72df1ef020f2f extends Template
 
     public function getDebugInfo()
     {
-        return array (  520 => 291,  507 => 32,  503 => 31,  499 => 30,  495 => 29,  491 => 28,  487 => 27,  483 => 26,  479 => 25,  474 => 24,  464 => 23,  452 => 20,  448 => 19,  442 => 16,  438 => 15,  434 => 14,  430 => 13,  426 => 12,  422 => 11,  418 => 10,  414 => 9,  410 => 8,  405 => 7,  395 => 6,  353 => 292,  351 => 291,  335 => 278,  326 => 272,  293 => 242,  280 => 232,  267 => 222,  250 => 208,  224 => 185,  207 => 171,  190 => 157,  72 => 42,  68 => 41,  60 => 35,  58 => 23,  55 => 22,  52 => 6,  46 => 1,);
+        return array (  517 => 291,  504 => 32,  500 => 31,  496 => 30,  492 => 29,  488 => 28,  484 => 27,  480 => 26,  476 => 25,  471 => 24,  461 => 23,  449 => 20,  445 => 19,  439 => 16,  435 => 15,  431 => 14,  427 => 13,  423 => 12,  419 => 11,  415 => 10,  411 => 9,  407 => 8,  402 => 7,  392 => 6,  350 => 292,  348 => 291,  332 => 278,  323 => 272,  290 => 242,  277 => 232,  264 => 222,  247 => 208,  221 => 185,  204 => 171,  187 => 157,  69 => 42,  60 => 35,  58 => 23,  55 => 22,  52 => 6,  46 => 1,);
     }
 
     public function getSourceContext()
@@ -591,7 +588,7 @@ class __TwigTemplate_2fbf557a760d1626c5a72df1ef020f2f extends Template
   <header id=\"header\" class=\"header fixed-top d-flex align-items-center\">
 
     <div class=\"d-flex align-items-center justify-content-between\">
-      <a href=\"{{ asset('index.html') }}\" class=\"logo d-flex align-items-center\">
+      <a href=\"\" class=\"logo d-flex align-items-center\">
         <img src=\"{{ asset('Admin/assets/img/logo1.png') }}\" alt=\"\">
         <span class=\"d-none d-lg-block\">DayEvent</span>
       </a>

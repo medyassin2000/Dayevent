@@ -254,9 +254,19 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->csrfProtection;
     }
 
-    public function form(array $value = []): \Symfony\Config\Framework\FormConfig
+    /**
+     * @return \Symfony\Config\Framework\FormConfig|$this
+     */
+    public function form($value = [])
     {
-        if (null === $this->form) {
+        if (!\is_array($value)) {
+            $this->_usedProperties['form'] = true;
+            $this->form = $value;
+
+            return $this;
+        }
+
+        if (!$this->form instanceof \Symfony\Config\Framework\FormConfig) {
             $this->_usedProperties['form'] = true;
             $this->form = new \Symfony\Config\Framework\FormConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -464,9 +474,19 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->request;
     }
 
-    public function assets(array $value = []): \Symfony\Config\Framework\AssetsConfig
+    /**
+     * @return \Symfony\Config\Framework\AssetsConfig|$this
+     */
+    public function assets($value = [])
     {
-        if (null === $this->assets) {
+        if (!\is_array($value)) {
+            $this->_usedProperties['assets'] = true;
+            $this->assets = $value;
+
+            return $this;
+        }
+
+        if (!$this->assets instanceof \Symfony\Config\Framework\AssetsConfig) {
             $this->_usedProperties['assets'] = true;
             $this->assets = new \Symfony\Config\Framework\AssetsConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -476,9 +496,19 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->assets;
     }
 
-    public function translator(array $value = []): \Symfony\Config\Framework\TranslatorConfig
+    /**
+     * @return \Symfony\Config\Framework\TranslatorConfig|$this
+     */
+    public function translator($value = [])
     {
-        if (null === $this->translator) {
+        if (!\is_array($value)) {
+            $this->_usedProperties['translator'] = true;
+            $this->translator = $value;
+
+            return $this;
+        }
+
+        if (!$this->translator instanceof \Symfony\Config\Framework\TranslatorConfig) {
             $this->_usedProperties['translator'] = true;
             $this->translator = new \Symfony\Config\Framework\TranslatorConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -488,9 +518,19 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->translator;
     }
 
-    public function validation(array $value = []): \Symfony\Config\Framework\ValidationConfig
+    /**
+     * @return \Symfony\Config\Framework\ValidationConfig|$this
+     */
+    public function validation($value = [])
     {
-        if (null === $this->validation) {
+        if (!\is_array($value)) {
+            $this->_usedProperties['validation'] = true;
+            $this->validation = $value;
+
+            return $this;
+        }
+
+        if (!$this->validation instanceof \Symfony\Config\Framework\ValidationConfig) {
             $this->_usedProperties['validation'] = true;
             $this->validation = new \Symfony\Config\Framework\ValidationConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -500,9 +540,19 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->validation;
     }
 
-    public function annotations(array $value = []): \Symfony\Config\Framework\AnnotationsConfig
+    /**
+     * @return \Symfony\Config\Framework\AnnotationsConfig|$this
+     */
+    public function annotations($value = [])
     {
-        if (null === $this->annotations) {
+        if (!\is_array($value)) {
+            $this->_usedProperties['annotations'] = true;
+            $this->annotations = $value;
+
+            return $this;
+        }
+
+        if (!$this->annotations instanceof \Symfony\Config\Framework\AnnotationsConfig) {
             $this->_usedProperties['annotations'] = true;
             $this->annotations = new \Symfony\Config\Framework\AnnotationsConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -512,9 +562,19 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->annotations;
     }
 
-    public function serializer(array $value = []): \Symfony\Config\Framework\SerializerConfig
+    /**
+     * @return \Symfony\Config\Framework\SerializerConfig|$this
+     */
+    public function serializer($value = [])
     {
-        if (null === $this->serializer) {
+        if (!\is_array($value)) {
+            $this->_usedProperties['serializer'] = true;
+            $this->serializer = $value;
+
+            return $this;
+        }
+
+        if (!$this->serializer instanceof \Symfony\Config\Framework\SerializerConfig) {
             $this->_usedProperties['serializer'] = true;
             $this->serializer = new \Symfony\Config\Framework\SerializerConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -524,9 +584,19 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->serializer;
     }
 
-    public function propertyAccess(array $value = []): \Symfony\Config\Framework\PropertyAccessConfig
+    /**
+     * @return \Symfony\Config\Framework\PropertyAccessConfig|$this
+     */
+    public function propertyAccess($value = [])
     {
-        if (null === $this->propertyAccess) {
+        if (!\is_array($value)) {
+            $this->_usedProperties['propertyAccess'] = true;
+            $this->propertyAccess = $value;
+
+            return $this;
+        }
+
+        if (!$this->propertyAccess instanceof \Symfony\Config\Framework\PropertyAccessConfig) {
             $this->_usedProperties['propertyAccess'] = true;
             $this->propertyAccess = new \Symfony\Config\Framework\PropertyAccessConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -536,9 +606,19 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->propertyAccess;
     }
 
-    public function propertyInfo(array $value = []): \Symfony\Config\Framework\PropertyInfoConfig
+    /**
+     * @return \Symfony\Config\Framework\PropertyInfoConfig|$this
+     */
+    public function propertyInfo($value = [])
     {
-        if (null === $this->propertyInfo) {
+        if (!\is_array($value)) {
+            $this->_usedProperties['propertyInfo'] = true;
+            $this->propertyInfo = $value;
+
+            return $this;
+        }
+
+        if (!$this->propertyInfo instanceof \Symfony\Config\Framework\PropertyInfoConfig) {
             $this->_usedProperties['propertyInfo'] = true;
             $this->propertyInfo = new \Symfony\Config\Framework\PropertyInfoConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -594,9 +674,19 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->exceptions[$class];
     }
 
-    public function webLink(array $value = []): \Symfony\Config\Framework\WebLinkConfig
+    /**
+     * @return \Symfony\Config\Framework\WebLinkConfig|$this
+     */
+    public function webLink($value = [])
     {
-        if (null === $this->webLink) {
+        if (!\is_array($value)) {
+            $this->_usedProperties['webLink'] = true;
+            $this->webLink = $value;
+
+            return $this;
+        }
+
+        if (!$this->webLink instanceof \Symfony\Config\Framework\WebLinkConfig) {
             $this->_usedProperties['webLink'] = true;
             $this->webLink = new \Symfony\Config\Framework\WebLinkConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -628,9 +718,19 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->lock;
     }
 
-    public function messenger(array $value = []): \Symfony\Config\Framework\MessengerConfig
+    /**
+     * @return \Symfony\Config\Framework\MessengerConfig|$this
+     */
+    public function messenger($value = [])
     {
-        if (null === $this->messenger) {
+        if (!\is_array($value)) {
+            $this->_usedProperties['messenger'] = true;
+            $this->messenger = $value;
+
+            return $this;
+        }
+
+        if (!$this->messenger instanceof \Symfony\Config\Framework\MessengerConfig) {
             $this->_usedProperties['messenger'] = true;
             $this->messenger = new \Symfony\Config\Framework\MessengerConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -676,9 +776,19 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->httpClient;
     }
 
-    public function mailer(array $value = []): \Symfony\Config\Framework\MailerConfig
+    /**
+     * @return \Symfony\Config\Framework\MailerConfig|$this
+     */
+    public function mailer($value = [])
     {
-        if (null === $this->mailer) {
+        if (!\is_array($value)) {
+            $this->_usedProperties['mailer'] = true;
+            $this->mailer = $value;
+
+            return $this;
+        }
+
+        if (!$this->mailer instanceof \Symfony\Config\Framework\MailerConfig) {
             $this->_usedProperties['mailer'] = true;
             $this->mailer = new \Symfony\Config\Framework\MailerConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -700,9 +810,19 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->secrets;
     }
 
-    public function notifier(array $value = []): \Symfony\Config\Framework\NotifierConfig
+    /**
+     * @return \Symfony\Config\Framework\NotifierConfig|$this
+     */
+    public function notifier($value = [])
     {
-        if (null === $this->notifier) {
+        if (!\is_array($value)) {
+            $this->_usedProperties['notifier'] = true;
+            $this->notifier = $value;
+
+            return $this;
+        }
+
+        if (!$this->notifier instanceof \Symfony\Config\Framework\NotifierConfig) {
             $this->_usedProperties['notifier'] = true;
             $this->notifier = new \Symfony\Config\Framework\NotifierConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -843,7 +963,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
 
         if (array_key_exists('form', $value)) {
             $this->_usedProperties['form'] = true;
-            $this->form = new \Symfony\Config\Framework\FormConfig($value['form']);
+            $this->form = \is_array($value['form']) ? new \Symfony\Config\Framework\FormConfig($value['form']) : $value['form'];
             unset($value['form']);
         }
 
@@ -903,43 +1023,43 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
 
         if (array_key_exists('assets', $value)) {
             $this->_usedProperties['assets'] = true;
-            $this->assets = new \Symfony\Config\Framework\AssetsConfig($value['assets']);
+            $this->assets = \is_array($value['assets']) ? new \Symfony\Config\Framework\AssetsConfig($value['assets']) : $value['assets'];
             unset($value['assets']);
         }
 
         if (array_key_exists('translator', $value)) {
             $this->_usedProperties['translator'] = true;
-            $this->translator = new \Symfony\Config\Framework\TranslatorConfig($value['translator']);
+            $this->translator = \is_array($value['translator']) ? new \Symfony\Config\Framework\TranslatorConfig($value['translator']) : $value['translator'];
             unset($value['translator']);
         }
 
         if (array_key_exists('validation', $value)) {
             $this->_usedProperties['validation'] = true;
-            $this->validation = new \Symfony\Config\Framework\ValidationConfig($value['validation']);
+            $this->validation = \is_array($value['validation']) ? new \Symfony\Config\Framework\ValidationConfig($value['validation']) : $value['validation'];
             unset($value['validation']);
         }
 
         if (array_key_exists('annotations', $value)) {
             $this->_usedProperties['annotations'] = true;
-            $this->annotations = new \Symfony\Config\Framework\AnnotationsConfig($value['annotations']);
+            $this->annotations = \is_array($value['annotations']) ? new \Symfony\Config\Framework\AnnotationsConfig($value['annotations']) : $value['annotations'];
             unset($value['annotations']);
         }
 
         if (array_key_exists('serializer', $value)) {
             $this->_usedProperties['serializer'] = true;
-            $this->serializer = new \Symfony\Config\Framework\SerializerConfig($value['serializer']);
+            $this->serializer = \is_array($value['serializer']) ? new \Symfony\Config\Framework\SerializerConfig($value['serializer']) : $value['serializer'];
             unset($value['serializer']);
         }
 
         if (array_key_exists('property_access', $value)) {
             $this->_usedProperties['propertyAccess'] = true;
-            $this->propertyAccess = new \Symfony\Config\Framework\PropertyAccessConfig($value['property_access']);
+            $this->propertyAccess = \is_array($value['property_access']) ? new \Symfony\Config\Framework\PropertyAccessConfig($value['property_access']) : $value['property_access'];
             unset($value['property_access']);
         }
 
         if (array_key_exists('property_info', $value)) {
             $this->_usedProperties['propertyInfo'] = true;
-            $this->propertyInfo = new \Symfony\Config\Framework\PropertyInfoConfig($value['property_info']);
+            $this->propertyInfo = \is_array($value['property_info']) ? new \Symfony\Config\Framework\PropertyInfoConfig($value['property_info']) : $value['property_info'];
             unset($value['property_info']);
         }
 
@@ -963,7 +1083,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
 
         if (array_key_exists('web_link', $value)) {
             $this->_usedProperties['webLink'] = true;
-            $this->webLink = new \Symfony\Config\Framework\WebLinkConfig($value['web_link']);
+            $this->webLink = \is_array($value['web_link']) ? new \Symfony\Config\Framework\WebLinkConfig($value['web_link']) : $value['web_link'];
             unset($value['web_link']);
         }
 
@@ -975,7 +1095,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
 
         if (array_key_exists('messenger', $value)) {
             $this->_usedProperties['messenger'] = true;
-            $this->messenger = new \Symfony\Config\Framework\MessengerConfig($value['messenger']);
+            $this->messenger = \is_array($value['messenger']) ? new \Symfony\Config\Framework\MessengerConfig($value['messenger']) : $value['messenger'];
             unset($value['messenger']);
         }
 
@@ -993,7 +1113,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
 
         if (array_key_exists('mailer', $value)) {
             $this->_usedProperties['mailer'] = true;
-            $this->mailer = new \Symfony\Config\Framework\MailerConfig($value['mailer']);
+            $this->mailer = \is_array($value['mailer']) ? new \Symfony\Config\Framework\MailerConfig($value['mailer']) : $value['mailer'];
             unset($value['mailer']);
         }
 
@@ -1005,7 +1125,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
 
         if (array_key_exists('notifier', $value)) {
             $this->_usedProperties['notifier'] = true;
-            $this->notifier = new \Symfony\Config\Framework\NotifierConfig($value['notifier']);
+            $this->notifier = \is_array($value['notifier']) ? new \Symfony\Config\Framework\NotifierConfig($value['notifier']) : $value['notifier'];
             unset($value['notifier']);
         }
 
@@ -1069,7 +1189,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
             $output['csrf_protection'] = $this->csrfProtection->toArray();
         }
         if (isset($this->_usedProperties['form'])) {
-            $output['form'] = $this->form->toArray();
+            $output['form'] = $this->form instanceof \Symfony\Config\Framework\FormConfig ? $this->form->toArray() : $this->form;
         }
         if (isset($this->_usedProperties['httpCache'])) {
             $output['http_cache'] = $this->httpCache instanceof \Symfony\Config\Framework\HttpCacheConfig ? $this->httpCache->toArray() : $this->httpCache;
@@ -1099,25 +1219,25 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
             $output['request'] = $this->request instanceof \Symfony\Config\Framework\RequestConfig ? $this->request->toArray() : $this->request;
         }
         if (isset($this->_usedProperties['assets'])) {
-            $output['assets'] = $this->assets->toArray();
+            $output['assets'] = $this->assets instanceof \Symfony\Config\Framework\AssetsConfig ? $this->assets->toArray() : $this->assets;
         }
         if (isset($this->_usedProperties['translator'])) {
-            $output['translator'] = $this->translator->toArray();
+            $output['translator'] = $this->translator instanceof \Symfony\Config\Framework\TranslatorConfig ? $this->translator->toArray() : $this->translator;
         }
         if (isset($this->_usedProperties['validation'])) {
-            $output['validation'] = $this->validation->toArray();
+            $output['validation'] = $this->validation instanceof \Symfony\Config\Framework\ValidationConfig ? $this->validation->toArray() : $this->validation;
         }
         if (isset($this->_usedProperties['annotations'])) {
-            $output['annotations'] = $this->annotations->toArray();
+            $output['annotations'] = $this->annotations instanceof \Symfony\Config\Framework\AnnotationsConfig ? $this->annotations->toArray() : $this->annotations;
         }
         if (isset($this->_usedProperties['serializer'])) {
-            $output['serializer'] = $this->serializer->toArray();
+            $output['serializer'] = $this->serializer instanceof \Symfony\Config\Framework\SerializerConfig ? $this->serializer->toArray() : $this->serializer;
         }
         if (isset($this->_usedProperties['propertyAccess'])) {
-            $output['property_access'] = $this->propertyAccess->toArray();
+            $output['property_access'] = $this->propertyAccess instanceof \Symfony\Config\Framework\PropertyAccessConfig ? $this->propertyAccess->toArray() : $this->propertyAccess;
         }
         if (isset($this->_usedProperties['propertyInfo'])) {
-            $output['property_info'] = $this->propertyInfo->toArray();
+            $output['property_info'] = $this->propertyInfo instanceof \Symfony\Config\Framework\PropertyInfoConfig ? $this->propertyInfo->toArray() : $this->propertyInfo;
         }
         if (isset($this->_usedProperties['cache'])) {
             $output['cache'] = $this->cache->toArray();
@@ -1129,13 +1249,13 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
             $output['exceptions'] = array_map(function ($v) { return $v instanceof \Symfony\Config\Framework\ExceptionConfig ? $v->toArray() : $v; }, $this->exceptions);
         }
         if (isset($this->_usedProperties['webLink'])) {
-            $output['web_link'] = $this->webLink->toArray();
+            $output['web_link'] = $this->webLink instanceof \Symfony\Config\Framework\WebLinkConfig ? $this->webLink->toArray() : $this->webLink;
         }
         if (isset($this->_usedProperties['lock'])) {
             $output['lock'] = $this->lock instanceof \Symfony\Config\Framework\LockConfig ? $this->lock->toArray() : $this->lock;
         }
         if (isset($this->_usedProperties['messenger'])) {
-            $output['messenger'] = $this->messenger->toArray();
+            $output['messenger'] = $this->messenger instanceof \Symfony\Config\Framework\MessengerConfig ? $this->messenger->toArray() : $this->messenger;
         }
         if (isset($this->_usedProperties['disallowSearchEngineIndex'])) {
             $output['disallow_search_engine_index'] = $this->disallowSearchEngineIndex;
@@ -1144,13 +1264,13 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
             $output['http_client'] = $this->httpClient instanceof \Symfony\Config\Framework\HttpClientConfig ? $this->httpClient->toArray() : $this->httpClient;
         }
         if (isset($this->_usedProperties['mailer'])) {
-            $output['mailer'] = $this->mailer->toArray();
+            $output['mailer'] = $this->mailer instanceof \Symfony\Config\Framework\MailerConfig ? $this->mailer->toArray() : $this->mailer;
         }
         if (isset($this->_usedProperties['secrets'])) {
             $output['secrets'] = $this->secrets->toArray();
         }
         if (isset($this->_usedProperties['notifier'])) {
-            $output['notifier'] = $this->notifier->toArray();
+            $output['notifier'] = $this->notifier instanceof \Symfony\Config\Framework\NotifierConfig ? $this->notifier->toArray() : $this->notifier;
         }
         if (isset($this->_usedProperties['rateLimiter'])) {
             $output['rate_limiter'] = $this->rateLimiter instanceof \Symfony\Config\Framework\RateLimiterConfig ? $this->rateLimiter->toArray() : $this->rateLimiter;

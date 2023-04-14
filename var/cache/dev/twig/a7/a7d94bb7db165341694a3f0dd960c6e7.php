@@ -85,47 +85,46 @@ class __TwigTemplate_48bb24a5c1ca8f7b61d9c0d45ce43919 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "
-    
-
-    <div class=\"container\">
-    <h1>Ticket index</h1>
+        echo "    <h1>Ticket index</h1>
 
     <table class=\"table\">
         <thead>
             <tr>
-                <th scope=\"col\">Prix</th>
-                <th scope=\"col\">NbTickets</th>
-                <th scope=\"col\">Type</th>
+                ";
+        // line 12
+        echo "                <th>Prix</th>
+                <th>NbTickets</th>
+                <th>Type</th>
             </tr>
         </thead>
         <tbody>
         ";
-        // line 21
+        // line 18
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["tickets"]) || array_key_exists("tickets", $context) ? $context["tickets"] : (function () { throw new RuntimeError('Variable "tickets" does not exist.', 21, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["tickets"]) || array_key_exists("tickets", $context) ? $context["tickets"] : (function () { throw new RuntimeError('Variable "tickets" does not exist.', 18, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["ticket"]) {
-            // line 22
+            // line 19
             echo "            <tr>
+                ";
+            // line 21
+            echo "                <td>";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["ticket"], "prix", [], "any", false, false, false, 21), "html", null, true);
+            echo "</td>
+                <td>";
+            // line 22
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["ticket"], "nbTickets", [], "any", false, false, false, 22), "html", null, true);
+            echo "</td>
                 <td>";
             // line 23
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["ticket"], "prix", [], "any", false, false, false, 23), "html", null, true);
-            echo "</td>
-                <td>";
-            // line 24
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["ticket"], "nbTickets", [], "any", false, false, false, 24), "html", null, true);
-            echo "</td>
-                <td>";
-            // line 25
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["ticket"], "type", [], "any", false, false, false, 25), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["ticket"], "type", [], "any", false, false, false, 23), "html", null, true);
             echo "</td>
             </tr>
         ";
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 28
+            // line 26
             echo "            <tr>
                 <td colspan=\"5\">no records found</td>
             </tr>
@@ -134,10 +133,9 @@ class __TwigTemplate_48bb24a5c1ca8f7b61d9c0d45ce43919 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['ticket'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 32
+        // line 30
         echo "        </tbody>
     </table>
-    </div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -159,7 +157,7 @@ class __TwigTemplate_48bb24a5c1ca8f7b61d9c0d45ce43919 extends Template
 
     public function getDebugInfo()
     {
-        return array (  138 => 32,  129 => 28,  121 => 25,  117 => 24,  113 => 23,  110 => 22,  105 => 21,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  137 => 30,  128 => 26,  120 => 23,  116 => 22,  111 => 21,  108 => 19,  103 => 18,  95 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -169,23 +167,21 @@ class __TwigTemplate_48bb24a5c1ca8f7b61d9c0d45ce43919 extends Template
 {% block title %}Ticket index {% endblock %}
 
 {% block body %}
-
-    
-
-    <div class=\"container\">
     <h1>Ticket index</h1>
 
     <table class=\"table\">
         <thead>
             <tr>
-                <th scope=\"col\">Prix</th>
-                <th scope=\"col\">NbTickets</th>
-                <th scope=\"col\">Type</th>
+                {#<th>Id</th>#}
+                <th>Prix</th>
+                <th>NbTickets</th>
+                <th>Type</th>
             </tr>
         </thead>
         <tbody>
         {% for ticket in tickets %}
             <tr>
+                {#<td>{{ ticket.id }}</td>#}
                 <td>{{ ticket.prix }}</td>
                 <td>{{ ticket.nbTickets }}</td>
                 <td>{{ ticket.type }}</td>
@@ -197,7 +193,6 @@ class __TwigTemplate_48bb24a5c1ca8f7b61d9c0d45ce43919 extends Template
         {% endfor %}
         </tbody>
     </table>
-    </div>
 {% endblock %}
 ", "ticket/indexF.html.twig", "C:\\Users\\hedit\\Desktop\\1.Projet_Symfony\\dayevent\\templates\\ticket\\indexF.html.twig");
     }

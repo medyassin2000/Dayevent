@@ -117,22 +117,21 @@ class __TwigTemplate_86273d87f2d27dfb9d97d3e7244bab83 extends Template
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["ticket"]) || array_key_exists("ticket", $context) ? $context["ticket"] : (function () { throw new RuntimeError('Variable "ticket" does not exist.', 24, $this->source); })()), "type", [], "any", false, false, false, 24), "html", null, true);
         echo "</td>
             </tr>
-            
         </tbody>
     </table>
 
     <a href=\"";
-        // line 30
+        // line 29
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_ticket_index");
         echo "\">back to list</a>
 
     <a href=\"";
-        // line 32
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_ticket_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["ticket"]) || array_key_exists("ticket", $context) ? $context["ticket"] : (function () { throw new RuntimeError('Variable "ticket" does not exist.', 32, $this->source); })()), "id", [], "any", false, false, false, 32)]), "html", null, true);
+        // line 31
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_ticket_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["ticket"]) || array_key_exists("ticket", $context) ? $context["ticket"] : (function () { throw new RuntimeError('Variable "ticket" does not exist.', 31, $this->source); })()), "id", [], "any", false, false, false, 31)]), "html", null, true);
         echo "\">edit</a>
 
     ";
-        // line 34
+        // line 33
         echo twig_include($this->env, $context, "ticket/_delete_form.html.twig");
         echo "
 ";
@@ -156,7 +155,7 @@ class __TwigTemplate_86273d87f2d27dfb9d97d3e7244bab83 extends Template
 
     public function getDebugInfo()
     {
-        return array (  136 => 34,  131 => 32,  126 => 30,  117 => 24,  110 => 20,  103 => 16,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  135 => 33,  130 => 31,  125 => 29,  117 => 24,  110 => 20,  103 => 16,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -186,7 +185,6 @@ class __TwigTemplate_86273d87f2d27dfb9d97d3e7244bab83 extends Template
                 <th>Type</th>
                 <td>{{ ticket.type }}</td>
             </tr>
-            
         </tbody>
     </table>
 

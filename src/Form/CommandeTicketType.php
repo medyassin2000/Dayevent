@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\CommandeTicket;
-use App\Entity\Ticket;
 use App\Entity\Utilisateur;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,12 +16,7 @@ class CommandeTicketType extends AbstractType
         $builder
             ->add('nomEvenement')
             ->add('prix')
-            ->add('idTicket',EntityType::class, [
-                'class' => Ticket::class,
-                'choice_label' => function (Ticket $ticket) {
-                    return $ticket->getType();
-                },
-            ])
+            ->add('idTicket')
             ->add('idUtilisateur', EntityType::class, [
                 'class' => Utilisateur::class,
                 'choice_label' => function (Utilisateur $utilisateur) {
