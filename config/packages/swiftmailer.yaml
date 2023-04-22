@@ -1,0 +1,8 @@
+swiftmailer:
+    transport: gmail
+    username: hediammar100@gmail.com
+    password: Hedi31032000
+    host: smtp.gmail.com
+    port: 587
+    encryption: tls
+    auth_mode: login

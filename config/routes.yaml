@@ -1,0 +1,11 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+#homepage:
+ #path: /
+ #controller: App\Controller\StudentController::index
+
+send_email:
+    path: /send-email
+    controller: App\Controller\TestController::sendEmail
