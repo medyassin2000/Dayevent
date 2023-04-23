@@ -232,6 +232,31 @@ public function sendEmail(Request $request, MailerInterface $mailer)
         'f' => $form->createView(),
     ]);
 }
+/**
+ * @Route("/lieustat", name="lieu_stat")
+ */
+public function placeStatistics()
+{
+    $em = $this->getDoctrine()->getManager();
+    $places = $em->getRepository(Evenement::class)->createQueryBuilder('e')
+    
+        ->select('e.lieu, COUNT(e.id) as count')
+        ->groupBy('e.lieu')
+        ->getQuery()
+        ->getResult();
+
+    // Build the chart data
+    $data = [['Lieu', 'Count']];
+    foreach ($places as $place) {
+        $data[] = [$place['lieu'], $place['count']];
+    }
+
+    // Render the chart
+    return $this->render('statistics/bar.html.twig', [
+        'chartData' => json_encode($data),
+    ]);
+}
+
 
 
 
