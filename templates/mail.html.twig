@@ -1,0 +1,54 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+   <div  style="display: flex;align-items: center;justify-content: center;margin-top: 150px; padding: 10px;">
+
+
+          <div class="card">
+            <div class="card-body">
+            <div class="row mb-3">
+            <div style="margin-top: 20px;display: flex;align-items: End;" >
+                   <a href="{{ path('send_email') }}"><i class="button" style="font-size: 20px;">Suivre Events</i></a>
+                  </div>
+                </div>
+            <div>
+              <h5 class="card-title">Email Sponsoring</h5>
+              <h6><font color="green">Entrer les details de votre annonce d'email Sponsoring</font></h6>
+            </div>
+              
+                 {{ form_start(f,{'attr': {'novalidate':'novalidate'}}) }}
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-3 col-form-label">objet</label>
+                  <div class="col-sm-9">
+                    {{ form_widget(f.objet,{'attr':{'class':'form-control'}}) }}
+                  </div>
+                </div>
+               
+                  <div class="row mb-3">
+                  <label for="inputText" class="col-sm-3 col-form-label">contenu</label>
+                  <div class="col-sm-9">
+                    {{ form_widget(f.contenu,{'attr':{'class':'form-control'}}) }}
+                  </div>
+                </div>
+                
+                 
+                </div>
+                
+                
+               
+                <div class="row mb-3">
+                  
+                  <div class="col-sm-10">
+                    {{ form_widget(f.Envoi,{'attr':{'class':'btn btn-primary'}}) }}
+                  </div>
+                </div>
+
+                {{ form_end(f) }}
+
+            </div>
+          </div>
+
+        </div>
+
+{% endblock %}

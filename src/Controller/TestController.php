@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 use App\Entity\Evenement;
+use App\Entity\Mail;
 use App\Entity\Utilisateur;
 use App\Entity\Commentairetest;
 use App\Form\EventType;
+use App\Form\MailType;
 use App\Form\CommentairetestType;
 use App\Controller\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -191,30 +193,48 @@ public function show(int $id, EvenementRepository $repositoryE,CommentairetestRe
 }
 
 
-
-public function sendEmail(MailerInterface $mailer)
+/**
+     * @Route("/mailsponso", name="mailsponso")
+     */
+public function sendEmail(Request $request, MailerInterface $mailer)
 {
-    // Get the list of recipients from the database
-    $recipients = $this->getDoctrine()->getRepository(Utilisateur::class)->findAll();
-    
-    // Create the message
-    $message = (new Email())
-        ->from('hediammarx@gmail.com')
-        ->subject('Subject of the email')
-        ->html('<p>Body of the email</p>');
+    $form = $this->createForm(MailType::class);
+    $form->handleRequest($request);
 
-    // Add each recipient to the message
-    foreach ($recipients as $recipient) {
-        $message->addTo($recipient->getMail());
+    if ($form->isSubmitted() && $form->isValid()) {
+        // Get the list of recipients from the database
+        $recipients = $this->getDoctrine()->getRepository(Utilisateur::class)->findAll();
+
+        // Get the subject and content of the email from the form
+        $objet = $form->get('objet')->getData();
+        $contenu = $form->get('contenu')->getData();
+
+        // Create the message
+        $message = (new Email())
+            ->from('hediammarx@gmail.com')
+            ->subject($objet)
+            ->html($contenu);
+
+        // Add each recipient to the message
+        foreach ($recipients as $recipient) {
+            $message->addTo($recipient->getMail());
+        }
+
+        // Send the message
+        $mailer->send($message);
+
+        // Redirect to a success page or show a success message
+        return $this->redirectToRoute('mailsponso');
     }
 
-    // Send the message
-    $mailer->send($message);
-    $events = $this->getDoctrine()->getManager()->getRepository(Evenement::class)->findAll();
-    return $this->render('test/index.html.twig', [
-        'b'=>$events
+    // Render the form
+    return $this->render('mail.html.twig', [
+        'f' => $form->createView(),
     ]);
 }
+
+
+
 
 
     
