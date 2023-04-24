@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="DJoz Template">
+    <meta name="keywords" content="DJoz, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Day Event</title>
+      {% block stylesheets %}
+    <!-- Google Font -->
+     <link href="{{ asset ('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap')}}"rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{{ asset ('frontend/css/bootstrap.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset ('frontend/css/font-awesome.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset ('frontend/css/barfiller.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset ('frontend/css/nowfont.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset ('frontend/css/rockville.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset ('frontend/css/magnific-popup.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset ('frontend/css/owl.carousel.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset ('frontend/css/slicknav.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset ('frontend/css/style.css')}}" type="text/css">
+ <style>
+ .single_player_container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.single_player_container h4 {
+  margin-bottom: 5px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.card audio {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.card audio::-webkit-media-controls-panel {
+  background-color: #f8f8f8;
+  border-radius: 6px;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+
+.card audio::-webkit-media-controls-play-button,
+.card audio::-webkit-media-controls-pause-button,
+.card audio::-webkit-media-controls-timeline,
+.card audio::-webkit-media-controls-current-time-display,
+.card audio::-webkit-media-controls-time-remaining-display,
+.card audio::-webkit-media-controls-mute-button,
+.card audio::-webkit-media-controls-volume-slider {
+  display: initial;
+}
+
+.card audio::-webkit-media-controls-volume-slider-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 20px;
+  background-color: #e5e5e5;
+  border-radius: 50px;
+  padding: 3px;
+  box-sizing: border-box;
+}
+
+.card audio::-webkit-media-controls-volume-slider-container:hover {
+  background-color: #d5d5d5;
+}
+
+.card audio::-webkit-media-controls-volume-slider-thumb {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #333;
+  -webkit-appearance: none;
+  z-index: 1;
+  margin-left: -10px;
+  margin-top: -8px;
+}
+
+.card audio::-webkit-media-controls-volume-slider:hover::-webkit-media-controls-volume-slider-thumb {
+  background-color: #555;
+}
+
+.card audio::-webkit-media-controls-volume-slider::-webkit-slider-runnable-track {
+  height: 4px;
+  background-color: #bbb;
+  border-radius: 2px;
+}
+
+.card audio::-webkit-media-controls-volume-slider:hover::-webkit-slider-runnable-track {
+  background-color: #999;
+}
+
+.card audio::-webkit-media-controls-volume-slider::-webkit-slider-thumb {
+  display:initial ;
+}
+
+
+
+
+ </style>
+    
+  {% endblock %}
+{% block header %}
+</head>
+
+
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+                    <div class="header__logo">
+                        <a href="./home"><img src="frontend/img/dayevent.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-10 col-md-10">
+                    <div class="header__nav">
+                        <nav class="header__menu mobile-menu">
+                            <ul>
+                                <li class="active"><a href="./home">Acceuil</a></li>
+                                
+                                <li><a href="./eventsclient">Liste D'evenement</a></li>
+                              
+                                <li><a href="./contact.html">Contact</a></li>
+                            </ul>
+                        </nav>
+                        <div class="header__right__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-dribbble"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+    {% endblock %}
+{% block body %}
+
+
+
+        {% endblock %}
+{% block footer %}
+    <!-- Footer Section Begin -->
+    <footer class="footer spad set-bg" data-setbg="frontend/img/footer-bg.png">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer__address">
+                        <ul>
+                            <li>
+                                <i class="fa fa-phone"></i>
+                                <p>Phone</p>
+                                <h6>1-677-124-44227</h6>
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope"></i>
+                                <p>Email</p>
+                                <h6>DJ.Music@gmail.com</h6>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 offset-lg-1 col-md-6">
+                    <div class="footer__social">
+                        <h2>DJoz</h2>
+                        <div class="footer__social__links">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-dribbble"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 offset-lg-1 col-md-6">
+                    <div class="footer__newslatter">
+                        <h4>Stay With me</h4>
+                        <form action="#">
+                            <input type="text" placeholder="Email">
+                            <button type="submit"><i class="fa fa-send-o"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+			<div class="footer__copyright__text">
+				<p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+			</div>
+			<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </div>
+    </footer>
+      {% endblock %}
+    <!-- Footer Section End -->
+ {% block javascripts %}
+    <!-- Js Plugins -->
+    <script src="{{ asset ('frontend/js/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{ asset ('frontend/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset ('frontend/js/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{ asset ('frontend/js/jquery.nicescroll.min.js')}}"></script>
+    <script src="{{ asset ('frontend/js/jquery.barfiller.js')}}"></script>
+    <script src="{{ asset ('frontend/js/jquery.countdown.min.js')}}"></script>
+    <script src="{{ asset ('frontend/js/jquery.slicknav.js')}}"></script>
+    <script src="{{ asset ('frontend/js/owl.carousel.min.js')}}"></script>
+    <script src="{{ asset ('frontend/js/main.js')}}"></script>
+
+    <!-- Music Plugin -->
+    <script src="{{ asset ('frontend/js/jquery.jplayer.min.js')}}"></script>
+    <script src="{{ asset ('frontend/js/jplayerInit.js')}}"></script>
+       {% endblock %}
+ </body>
+
+</html>

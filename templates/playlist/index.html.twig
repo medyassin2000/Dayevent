@@ -1,0 +1,58 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Playlist index{% endblock %}
+
+{% block body %}
+    
+    <h1>Playlist index</h1>
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-13">
+
+          <div class="card">
+    <div class="card-body">
+<div class="datatable-container">
+    <table class="table" class="table datatable datatable-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>DateCreation</th>
+                      <th>Nom Utilisateur</th>
+                <th>Show</th>
+                     <th>Update</th>
+       
+            </tr>
+        </thead>
+        <tbody>
+        {% for playlist in playlists %}
+            <tr>
+                <td>{{ playlist.id }}</td>
+                <td>{{ playlist.nom }}</td>
+                <td>{{ playlist.dateCreation ? playlist.dateCreation|date('Y-m-d') : '' }}</td>
+             <td>{{ playlist.idUser.nom }}</td>
+                <td>
+                 <div class="form-group">    <a href="{{ path('app_playlist_show', {'id': playlist.id}) }}"  class="btn btn-primary">show</a><div>
+                    
+                </td>
+                  <td>
+                  <div class="form-group"><a href="{{ path('app_playlist_edit', {'id': playlist.id}) }}" class="btn btn-primary">edit</a> <div>
+                  </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+  <div class="form-group">   <a  href="{{ path('app_playlist_new') }}" class="btn btn-primary" >Create new</a> </div>
+{% endblock %}

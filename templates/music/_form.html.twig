@@ -1,0 +1,211 @@
+<body>
+<section class="section">
+      <div class="row">
+        <div class="col-lg-6">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"> Form Elements</h5>
+
+              <!-- General Form Elements -->
+{{ form_start(form, {'attr': {'novalidate':'novalidate'}}) }}
+ <div class="form-group">
+        {{ form_label(form.nomMorceaux, null, { 'label_attr': {'class': 'above-input'} }) }}
+        {{ form_widget(form.nomMorceaux, { 'attr': {'class': 'form-control','id': 'nomMorceux'} }) }}
+            {{ form_errors(form.nomMorceaux) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.nomArtiste, null, { 'label_attr': {'class': 'above-input'} }) }}
+        {{ form_widget(form.nomArtiste, { 'attr': {'class': 'form-control'} }) }}
+           {{ form_errors(form.nomArtiste) }}
+    </div>
+
+
+<div class="form-group">
+  <div class="form-group">
+    {{ form_label(form.fichier, 'File Path') }}
+{{ form_widget(form.fichier, { 'attr': {'class': 'form-control', 'readonly': 'true', 'name': 'form[fichier]'} }) }}
+
+  {{ form_errors(form.fichier) }}
+  
+</br>
+  <div class="form-group">
+    <button  class="btn btn-primary">{{ button_label|default('Save') }}</button>
+    </div>
+{{ form_end(form) }}
+  </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  
+
+   {% block javascripts %}
+<script>
+ const uploadBtn = document.getElementById("uploadBtn");
+
+        uploadBtn.addEventListener("click", () => {
+            const input = document.createElement("input");
+            input.type = "file";
+
+            input.addEventListener("change", () => {
+                const file = input.files[0];
+                const fileUrl = URL.createObjectURL(file); // Créer une URL de l'objet "File"
+                const fileName = file.name;
+                const replacedName = fileName.replace(/^[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}/i, "");
+                const replacedPath = "C:\\Users\\user\\Downloads\\Djoz-master\\" + replacedName;
+                console.log(replacedPath);
+                document.getElementById("music_fichier").defaultValue = replacedPath;
+
+ console.log(document.getElementById("music_fichier").value);
+
+    console.log(fichierValue);
+            });
+
+            input.click(); 
+        });
+
+
+    </script>
+{% endblock %}
+
+   
+   
+   
+    <script>
+
+
+
+/*function handleFileUpload(form) {
+  const uploadBtn = document.getElementById("uploadBtn");
+
+  uploadBtn.addEventListener("click", () => {
+    const input = document.createElement("input");
+    input.type = "file";
+  
+    input.addEventListener("change", () => {
+      const file = input.files[0];
+      const fileUrl = URL.createObjectURL(file);
+      const fileName = file.name;
+      const replacedName = fileName.replace(/^[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}/i, "");
+      const replacedPath = "C:\\music\\" + replacedName;
+      console.log(replacedPath);
+      form.fichier.value = replacedPath;
+    });
+  
+    input.click(); 
+  });
+}*/
+</script>
+   <script>
+  /*document.getElementById('fileBtn').addEventListener('change', function() {
+    var input = this;
+    var file = input.files[0];
+    var fullPath = input.value;
+    document.getElementById('fichier').value = fullPath;
+});
+  
+  
+  window.onload = function() {
+  var fileInput = document.getElementById('fileBtn');
+  var filePath = document.getElementById('fichier');
+
+  fileInput.addEventListener('change', function() {
+    filePath.value = fileInput.value;
+  });
+};*/
+ /*
+ const uploadBtn = document.getElementById("uploadBtn");
+
+uploadBtn.addEventListener("click", () => {
+  const input = document.createElement("input");
+  input.type = "file";
+  
+  input.addEventListener("change", () => {
+const file= input.value;
+  const replacedPath = file.replace("fakepath", "music");
+    console.log(input.value);
+  });
+  
+  input.click();
+});
+*/
+/*
+ const uploadBtn = document.getElementById("uploadBtn");
+
+uploadBtn.addEventListener("click", () => {
+  const input = document.createElement("input");
+  input.type = "file";
+  
+  input.addEventListener("change", () => {
+    const file = input.files[0];
+    const fileUrl = URL.createObjectURL(file); // Créer une URL de l'objet "File"
+    const urlParams = new URLSearchParams(fileUrl);
+    const fileName = file.name;
+    const filePath = fileUrl.replace(fileName, "");
+    const replacedPath = filePath.replace("blob:http://127.0.0.1:8000/", "C:\\music\\");
+    console.log(replacedPath + fileName);
+  });
+  
+  input.click();
+});
+*/
+/*const uploadBtn = document.getElementById("uploadBtn");
+
+uploadBtn.addEventListener("click", () => {
+  const input = document.createElement("input");
+  input.type = "file";
+  
+  input.addEventListener("change", () => {
+    const file = input.files[0];
+    const fileUrl = URL.createObjectURL(file); // Créer une URL de l'objet "File"
+    const fileName = file.name;
+    const replacedName = fileName.replace(/^[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}/i, "");
+    const replacedPath = "C:\\music\\" + replacedName;
+    console.log(replacedPath);
+   form.fichier.value = replacedPath;
+
+  });
+  
+  input.click(); 
+});
+*/
+
+ 
+
+  
+  
+  
+   /*
+document.getElementById('fileBtn').addEventListener('click', function() {
+    // Ouvre la boîte de dialogue de sélection de fichier
+    var input = document.createElement('input');
+    input.type = 'file';
+    input.onchange = function(e) {
+        // Obtient le chemin complet du fichier sélectionné
+        var file = e.target.files[0];
+        var fullPath = file.path || file.name; // fullPath dépend du navigateur et de l'OS
+        
+        // Remplit la valeur de l'élément de formulaire avec le chemin complet
+document.querySelector('[name="form[fichier]"]').value = fullPath;
+
+    };
+    input.click();
+  });*/
+  /*input=document.getElementById('fileBtn')
+
+     input.onchange = function() {
+            var file = input.target.files[0];
+            var fullPath = file.path || file.name;
+            document.getElementById('fichier').value = fullPath;
+        };*/
+      /*document.getElementById('fileInput').addEventListener('change', function() {
+    var reader = new FileReader();
+    reader.onload = function() {
+      document.getElementById('filePath').value = this.file.path;
+    };
+    reader.readAsDataURL(this.files[0]);
+  });*/
+</script>
+</body>
