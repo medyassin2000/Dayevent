@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 #[Route('/commande/ticket')]
 class CommandeTicketController extends AbstractController
@@ -139,5 +141,56 @@ class CommandeTicketController extends AbstractController
         }
 
         return $this->redirectToRoute('app_commande_ticket_newF', [], Response::HTTP_SEE_OTHER);
+    }
+
+    /**
+     * @Route("/data", name="users_data")
+     */
+    public function usersData()
+    {
+        return $this->render('commande_ticket/data.html.twig');
+    }
+
+    /**
+     * @Route("data/download/{id}", name="users_data_download")
+     */
+    public function usersDataDownload($id)
+    {
+        $commandeTicket = $this->getDoctrine()->getRepository(CommandeTicket::class)->find($id);
+        // On définit les options du PDF
+        $pdfOptions = new Options();
+        // Police par défaut
+        $pdfOptions->set('defaultFont', 'Arial');
+        $pdfOptions->setIsRemoteEnabled(true);
+
+        // On instancie Dompdf
+        $dompdf = new Dompdf($pdfOptions);
+        $context = stream_context_create([
+            'ssl' => [
+                'verify_peer' => FALSE,
+                'verify_peer_name' => FALSE,
+                'allow_self_signed' => TRUE
+            ]
+        ]);
+        $dompdf->setHttpContext($context);
+
+        // On génère le html
+        $html = $this->renderView('commande_ticket/download.html.twig' , [
+            'commande_ticket' => $commandeTicket,
+        ]);
+
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        // On génère un nom de fichier
+        $fichier = 'user-data-'. $commandeTicket->getId() .'.pdf';
+
+        // On envoie le PDF au navigateur
+        $dompdf->stream($fichier, [
+            'Attachment' => true
+        ]);
+
+        return new Response();
     }
 }

@@ -25,5 +25,6 @@
     <a href="{{ path('app_commande_ticket_newF') }}">back</a>
 
     <a href="{{ path('app_commande_ticket_editF', {'id': commande_ticket.id}) }}">edit</a>
+    <a href="{{ path('users_data_download', {'id': commande_ticket.id}) }}">Télécharger les données</a>
         </div>
 {% endblock %}

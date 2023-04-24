@@ -1,0 +1,47 @@
+{#{% extends "base-pdf.html.twig" %}
+
+{% block title %}Liste des données de commandeTicket{% endblock %}
+{% block body %}
+    <h1>Liste des données de votre commande ticket</h1>
+    <h2>Vos données</h2>
+    <table border=1>
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">NomEvenement</th>
+                <th scope="col">Prix</th>
+                <th scope="col">IdTicket</th>
+            </tr>
+        </thead>
+        <tbody>
+                <td>{{ commande_ticket.id }}</td>
+                <td>{{ commande_ticket.nomEvenement }}</td>
+                <td>{{ commande_ticket.prix }}</td>
+                <td>{{ commande_ticket.idTicket }}</td>
+        </tbody>
+    </table>
+{% endblock %}#}
+
+{% extends "base-pdf.html.twig" %}
+
+{% block title %}Liste des données de commandeTicket{% endblock %}
+{% block body %}
+    <h1 style="color: violet;">Liste des données de votre commande ticket</h1>
+    <h2 style="color: violet;">Vos données</h2>
+    <table style="width: 100%; border-collapse: collapse; background-color: #f2f2f2;">
+        <thead>
+            <tr>
+                <th style="padding: 8px; border: 1px solid #ddd;">Id</th>
+                <th style="padding: 8px; border: 1px solid #ddd;">NomEvenement</th>
+                <th style="padding: 8px; border: 1px solid #ddd;">Prix</th>
+                <th style="padding: 8px; border: 1px solid #ddd;">IdTicket</th>
+            </tr>
+        </thead>
+        <tbody>
+                <td style="padding: 8px; border: 1px solid #ddd;">{{ commande_ticket.id }}</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">{{ commande_ticket.nomEvenement }}</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">{{ commande_ticket.prix }}</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">{{ commande_ticket.idTicket }}</td>
+        </tbody>
+    </table>
+{% endblock %}

@@ -28,6 +28,9 @@
     <a href="{{ path('app_commande_ticket_index') }}">back to list</a>
 
     <a href="{{ path('app_commande_ticket_edit', {'id': commande_ticket.id}) }}">edit</a>
+    <a href="{{ path('users_data_download', {'id': commande_ticket.id}) }}">Télécharger les données</a>
+
+
 
     {{ include('commande_ticket/_delete_form.html.twig') }}
 {% endblock %}
