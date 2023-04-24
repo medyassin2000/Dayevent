@@ -2,6 +2,23 @@
 
 
 {% block body %}
+  <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '561154435978032',
+                xfbml      : true,
+                version    : 'v16.0'
+            });
+            FB.AppEvents.logPageView();
+        };
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
    <section class="track spad">
         <div class="container">
             <div class="row">
@@ -24,43 +41,16 @@
        <div class="single_player_container">
                          
                             <h4>{{ music.nomMorceaux }}</h4>
-                                           <div class="jp-jplayer jplayer" data-ancestor=".jp_container_4" data-mp3="frontend/music-files/4.mp3" id="jp_jplayer_0" style="width: 0px; height: 0px;">
-    <img id="jp_poster_0" style="width: 0px; height: 0px; display: none;">
-    <audio id="jp_audio_0" preload="metadata" src="C:/Users/user/Downloads/Djoz-master/music-files/4.mp3"></audio>
+                              <div class="card">
+  {% set file_name = music.fichier|split('/')|last %}
+  <audio controls>
+    <source src="{{ asset('music/products/' ~ file_name) }}" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <div>
+ <a href="{{ path('ssd', {'id': music.id}) }}" title="Share on Facebook"  class="btn btn-primary" style="background-color: #3b5998;"  role="button"><span class="badge bg-danger ms-2">Facebook</span></a>
+ </div>
 </div>
-
-                            <div class="jp-audio jp_container_4" role="application" aria-label="media player">          
-  
-                                <div class="jp-gui jp-interface">
-                                    <!-- Player Controls -->
-                                    <div class="player_controls_box">
-                                        <button class="jp-play player_button" tabindex="0"></button>
-                                    </div>
-                                    <!-- Progress Bar -->
-                                    <div class="player_bars">
-                                        <div class="jp-progress">
-                                            <div class="jp-seek-bar">
-                                                <div>
-                                                    <div class="jp-play-bar">
-                                                        <div class="jp-current-time" role="timer" aria-label="time">0:00
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
-                                    </div>
-                                    <!-- Volume Controls -->
-                                    <div class="jp-volume-controls">
-                                        <button class="jp-mute" tabindex="0"><i
-                                                class="fa fa-volume-down"></i></button>
-                                        <div class="jp-volume-bar">
-                                            <div class="jp-volume-bar-value" style="width: 0%;"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         {% endfor %}
                          <div class="col-lg-5 p-0">
                   
@@ -69,6 +59,7 @@
         </div>
     </section>
  <section class="countdown spad set-bg" data-setbg="img/countdown-bg.jpg">
+ <i class="fab fa-facebook"></i>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

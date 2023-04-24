@@ -38,6 +38,17 @@ class MusicRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    public function countMusiquesByArtiste()
+{
+    $qb = $this->createQueryBuilder('m')
+        ->select('m.nomArtiste', 'COUNT(m) AS nombreMusiques')
+        ->groupBy('m.nomArtiste')
+        ->orderBy('nombreMusiques', 'DESC')
+        ->setMaxResults(5);
+    
+    return $qb->getQuery()->getResult();
+}
+
 
 //    /**
 //     * @return Music[] Returns an array of Music objects

@@ -1,0 +1,16 @@
+{% extends 'back.html.twig' %}
+
+
+    {% block title %}Welcome!{% endblock %}
+       
+
+   
+        {% block body %}
+      <div class="example-wrapper">
+    {{ render_chart(chart, {'id': 'my-chart'})}}
+</div>
+        
+        {% endblock %}
+        {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
+  
+

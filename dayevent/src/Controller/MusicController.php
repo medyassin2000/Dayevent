@@ -40,28 +40,26 @@ class MusicController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $file */
             $file = $form->get('fichier')->getData();
-            if ($file) {
-                $fileName = uniqid() . '.' . $file->guessExtension();
-                try {
-                    $file->move(
-                        $this->getParameter('kernel.project_dir') . '/public/music/products',
-                        $fileName
-                    );
+          
+                $fileName =  $file->getClientOriginalName(); ;
+              
 
                     $musicPath = '/music/products' . $fileName;
-
-                    $music->setFichier($musicPath);
-                    $musicRepository->save($music, true);
-
+                    $name=$musicPath . $fileName;
+                    $file->move($this->getParameter('app.path.products'), $name);
+                   
+                   
+                  
                     // Ajouter le chemin complet de la photo dans la base de données
-                    $musicFullPath = $this->getParameter('kernel.project_dir') . '/public' . $musicPath;
-                    $music->setFichier($musicFullPath);
-                    $musicRepository->save($music, true);
-
-                } catch (FileException $e) {
-                    // Gérer les erreurs de téléchargement du fichier
-                }
-            }
+                 
+                    $music->setFichier($name);
+                   
+        
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $entityManager->persist($music);
+                    $entityManager->flush();
+                
+          
 
             return $this->redirectToRoute('app_music_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -119,6 +117,21 @@ class MusicController extends AbstractController
         return $this->render('Frontend/idex1.html.twig', [
             'music' => $music,
         ]);
+    }
+    
+    #[Route('/front/share/{id}', name: 'ssd')]
+    public function share($id, Request $request, MusicRepository $repo): Response
+    {
+        $music = $repo->find($id);
+
+        $hashtag = "#" . str_replace(' ', '_', $music->getNomMorceaux());
+       
+        $homepageUrl = "https://open.spotify.com/playlist/6PUuYc0KQoSd3UPMoKhVpJ"; // Replace with the URL of your website's homepage or the URL of the page where the tournament is displayed
+        $shareUrl = "https://www.facebook.com/dialog/share?app_id=160291406462337&display=popup&href=" . urlencode($homepageUrl);
+        $shareUrl .= "&hashtag=" . urlencode($hashtag);
+
+        return $this->redirect($shareUrl);
+        
     }
 
 }

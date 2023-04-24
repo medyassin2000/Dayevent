@@ -5,3 +5,13 @@
 app_music_frontend_index:
     path: /frontend
     controller: App\Controller\MusicController::frontendIndex
+
+# config/routes.yaml
+video_download:
+    path: '/video/download'
+    controller: App\Controller\VideoController::download
+
+download_video:
+    path: /download
+    controller: App\Controller\YoutubeController::download
+
