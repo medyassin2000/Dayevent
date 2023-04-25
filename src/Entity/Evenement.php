@@ -31,12 +31,19 @@ class Evenement
 
     /**
      * @ORM\Column(type="string", length=255)
-     
+     * @Assert\Length( * min = 5, * max = 50, 
+    * * minMessage = "Le nom  doit comporter au moins {{ limit }} caractères",
+    *  * maxMessage = "Le nom  doit comporter au plus {{ limit }} caractères" * )
+    * * @Assert\NotBlank( message="Ne doit pas être vide")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * * @Assert\Length( * min = 3, * max = 50, 
+    * * minMessage = "Le nom  doit comporter au moins {{ limit }} caractères",
+    *  * maxMessage = "Le nom  doit comporter au plus {{ limit }} caractères" * )
+    * * @Assert\NotBlank( message="Ne doit pas être vide")
      */
     private $lieu;
     
@@ -49,11 +56,17 @@ class Evenement
 
     /**
      * @ORM\Column(type="integer", length=255)
+     * * @Assert\Length( * min = 5, * max = 50, 
+    * * minMessage = "Le nom  doit comporter au moins {{ limit }} caractères",
+    *  * maxMessage = "Le nom  doit comporter au plus {{ limit }} caractères" * )
+    * * @Assert\NotBlank( message="Ne doit pas être vide")
      */
     private $nb_ticket;
 
     /**
      * @ORM\Column(type="integer", length=30)
+     * @Assert\NotBlank(message="Prix ne doit pas etre vide")
+     * @Assert\Positive(message="le prix doit etre superieur a 0")
      */
     private $prix;
 
