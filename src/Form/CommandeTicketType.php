@@ -2,12 +2,14 @@
 
 namespace App\Form;
 
-use App\Entity\CommandeTicket;
 use App\Entity\Utilisateur;
+use App\Entity\CommandeTicket;
 use Symfony\Component\Form\AbstractType;
+use Karser\Recaptcha3Bundle\Form\Recaptcha3Type;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3;
 
 class CommandeTicketType extends AbstractType
 {
@@ -22,8 +24,11 @@ class CommandeTicketType extends AbstractType
                 'choice_label' => function (Utilisateur $utilisateur) {
                     return $utilisateur->getNom();
                 },
+            ])
+            ->add('captcha', Recaptcha3Type::class, [
+                'constraints' => new Recaptcha3(),
+                'action_name' => 'homepage',
             ]);
-        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

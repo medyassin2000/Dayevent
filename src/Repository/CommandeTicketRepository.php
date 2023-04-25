@@ -63,4 +63,15 @@ class CommandeTicketRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    /*public function findByNomEvenementAndPrix($nomEvenement, $prix)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.nomEvenement = :nomEvenement')
+            ->andWhere('c.prix = :prix')
+            ->setParameter('nomEvenement', $nomEvenement)
+            ->setParameter('prix', $prix)
+            ->getQuery()
+            ->getResult();
+
+    }*/
 }
