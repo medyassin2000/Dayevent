@@ -3,6 +3,7 @@
 namespace App\Controller;
 use App\Entity\Evenement;
 use App\Entity\Mail;
+use App\Entity\Seat;
 use App\Entity\Utilisateur;
 use App\Entity\Commentairetest;
 use App\Form\EventType;
@@ -14,6 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\EvenementRepository;
+use App\Repository\SeatRepository;
 use App\Repository\CommentairetestRepository;
 use App\Repository\EntityNameRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -26,6 +28,7 @@ use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 
@@ -256,8 +259,32 @@ public function placeStatistics()
         'chartData' => json_encode($data),
     ]);
 }
+  /**
+     * @Route("/seatchart", name="seatchart")
+     */
+    public function seatChart(SeatRepository $seatRepository): Response
+    {
+        $seats = $seatRepository->findAll();
 
+        return $this->render('seat.html.twig', [
+            'seats' => $seats
+        ]);
+    }
 
+    /**
+     * @Route("/reserve-seat/{id}", name="reserve_seat", methods={"PUT"})
+     */
+    public function reserveSeat(Request $request, EntityManagerInterface $entityManager, Seat $seat): JsonResponse
+    {
+        $data = json_decode($request->getContent(), true);
+
+        if (isset($data['status'])) {
+            $seat->setStatus($data['status']);
+            $entityManager->flush();
+        }
+
+        return new JsonResponse(['status' => 'success']);
+    }
 
 
 

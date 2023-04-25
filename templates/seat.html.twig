@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+ <body>
+    <h1>Seat Chart</h1>
+
+    <table>
+        {% for row in 1..10 %}
+            <tr>
+                {% for seat in 1..10 %}
+                    {% set seatObject = seats|filter(s => s.seatNumber == seat and s.rowNumber == row)|first %}
+
+                    {% if seatObject %}
+                        <td>
+                            <button type="button" class="seat {% if seatObject.status == 'reserved' %}reserved{% else %}available{% endif %}"
+                                    data-seat-id="{{ seatObject.id }}" {% if seatObject.status == 'reserved' %}disabled{% endif %}>
+                                {{ seatObject.rowNumber }}/{{ seatObject.seatNumber }}
+                            </button>
+                        </td>
+                    {% else %}
+                        <td></td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+
+    <script>
+        const buttons = document.querySelectorAll('.seat');
+
+        buttons.forEach(button => {
+            const seatId = button.getAttribute('data-seat-id');
+
+            button.addEventListener('click', () => {
+                if (button.classList.contains('reserved')) {
+                    return;
+                }
+
+                const status = button.classList.contains('available') ? 'reserved' : 'available';
+
+                fetch(`/reserve-seat/${seatId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ status })
+                }).then(response => {
+                    if (response.ok) {
+                        button.classList.toggle('available');
+                        button.classList.toggle('reserved');
+                        button.disabled = button.classList.contains('reserved');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
