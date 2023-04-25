@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+
+use App\Service\TwilioClient;
 use App\Entity\CommentaireRec;
 use App\Form\CommentaireRecType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -80,5 +82,22 @@ class CommentaireRecController extends AbstractController
         }
 
         return $this->redirectToRoute('app_commentaire_rec_index', [], Response::HTTP_SEE_OTHER);
+    }
+    #[Route('/send-sms', name: 'commentairerec_send_sms', methods: ['GET'])]
+    public function sendSms(Request $request, TwilioClient $twilioClient, EntityManagerInterface $entityManager,CommentaireRecType $commentaireRecType): Response
+    {
+        $commentaireRecController = new CommentaireRecController();
+        $form = $this->createForm(CommentaireRecType::class);
+
+        $form->handleRequest($request);
+        
+        $to = '+216'.$form->getData()->getIdRec()->getTel(); // The phone number to send the SMS to
+        $from = '+15746266341'; // Your Twilio phone number
+        $body = 'Bonjour cher client, ' .$form->getData()->getContenu() . '. Merci pour votre patience.';// The message body
+
+        $twilioClient->sendSMS($to, $from, $body);
+        $this->new($request, $entityManager);
+
+        return new Response('SMS sent successfully!');
     }
 }

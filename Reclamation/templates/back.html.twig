@@ -14,6 +14,7 @@
             <link href="{{ asset ('Admin/assets/img/favicon.png')}}" rel="icon">
             <link href="{{ asset ('Admin/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
               <link href="{{ asset ('Admin/assets/css/style.css')}}" rel="stylesheet">
+              <link href="https://unpkg.com/singledivui/dist/singledivui.min.css" rel="stylesheet" />
 
   <!-- Google Fonts -->
   <link href="{{ asset ('https://fonts.gstatic.com')}}" rel="preconnect">
@@ -21,15 +22,10 @@
         {% endblock %}
 
         {% block javascripts %}
-            <script src="{{ asset ('Admin/assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
-            <script src="{{ asset ('Admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-            <script src="{{ asset ('Admin/assets/vendor/chart.js/chart.umd.js')}}"></script>
-            <script src="{{ asset ('Admin/assets/vendor/echarts/echarts.min.js')}}"></script>
-            <script src="{{ asset ('Admin/assets/vendor/quill/quill.min.js')}}"></script>
-            <script src="{{ asset ('Admin/assets/vendor/simple-datatables/simple-datatables.js')}}"></script>
-            <script src="{{ asset ('Admin/assets/vendor/tinymce/tinymce.min.js')}}"></script>
-            <script src="{{ asset ('Admin/assets/vendor/php-email-form/validate.js')}}"></script>
-            <script src="{{ asset ('Admin/assets/js/main.js')}}"></script>
+        
+            
+            <script src="https://unpkg.com/singledivui/dist/singledivui.min.js"></script>
+            
 
         {% endblock %}
     </head>
@@ -46,11 +42,80 @@
     </div><!-- End Logo -->
 
     <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-      </form>
-    </div><!-- End Search Bar -->
+  <form action="{{ path('app_reclamation_index') }}" method="get" class="search-filter-form">
+    <div class="search-container">
+      <input type="text" placeholder="Search reclamations..." name="search" value="{{ app.request.query.get('search') }}">
+      <button type="submit1">Search<i class="fa fa-search"></i></button>
+    </div>
+  </form>
+</div><!-- End Search Bar -->
+
+<style>
+.row-stat {
+  display: flex;
+}
+.cell-stat {
+  padding: 0px 35px;
+}
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.search-filter-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.search-container {
+  position: relative;
+  width: 100%;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px 20px;
+  border: 2px solid #ddd;
+  border-radius: 20px;
+  font-size: 16px;
+  outline: none;
+}
+
+button[type="submit1"] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+}
+
+button[type="submit1"] i {
+  font-size: 20px;
+}
+
+i.fa-search {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #555;
+}
+</style>
+
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
@@ -282,6 +347,14 @@
           <span>Les Commentaires</span>
         </a>
       </li><!-- End Register Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ path('app_reclamation_statistique') }}">
+          <i class="bi bi-bar-chart"></i>
+          <span>Statistique</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+
 
       
       

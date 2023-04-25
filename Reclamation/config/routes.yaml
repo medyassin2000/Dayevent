@@ -7,5 +7,26 @@ app_reclamation_frontend :
 app_reclamation_contact: 
   path: /contact
   controller: App\Controller\ReclamationController::contactIndex
-   
-  
+app_reclamation_statistique:
+  path: /statistiques
+  controller: App\Controller\ReclamationController::statistique
+app_reclamation_index:
+  path: /reclamations/list
+  controller: App\Controller\ReclamationController::list
+  methods: GET
+app_reclamation:
+    path: /reclamation
+    controller: App\Controller\ReclamationController::index
+    methods: GET
+generate_pdf:
+   path: /generate-pdf
+   controller: App\Controller\PdfController::generatePdf
+   methods: [GET]
+download_remote_pdf:
+    path: /download-remote-pdf
+    controller: App\Controller\RemotePdfController::download
+    methods: [GET] 
+commentairerec_send_sms:
+    path: /send-sms
+    controller: App\Controller\CommentaireRecController::sendSms
+

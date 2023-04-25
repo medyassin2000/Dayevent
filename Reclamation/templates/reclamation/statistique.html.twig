@@ -1,0 +1,59 @@
+{% extends 'back.html.twig' %}
+
+
+
+{% block body %}
+    <h1>Statistiques :</h1>
+<div class="row-stat">
+  <div class="cell-stat">
+    <h2>Line Chart</h2>
+    <div id="chart1"></div>
+  </div>
+  <div class="cell-stat">
+    <h2>Bar Chart</h2>
+    <div id="chart2"></div>
+  </div>
+  
+  <div class="cell-stat">
+    <h2>Area Chart</h2>
+    <div id="chart3"></div>
+  </div>
+</div>
+{% endblock %}    
+
+
+{% block javascripts %}
+ <script src="https://unpkg.com/singledivui/dist/singledivui.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function(event) { 
+ const { Chart } = SingleDivUI;
+ 
+const options = {
+  data: {
+    labels: {{years}},
+    series: {
+      points: {{data}}
+    }
+  },
+  height: 200,
+  width: 400
+};
+
+new Chart('#chart1',  {
+    type: 'line',
+    ...options  
+});
+
+new Chart('#chart2',  {
+    type: 'bar',
+    ...options
+});
+
+new Chart('#chart3',  {
+    type: 'area',
+    ...options
+});
+});
+</script>
+{% endblock %}
+   

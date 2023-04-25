@@ -35,7 +35,7 @@ class Reclamation
      * @var string
      *
      * @ORM\Column(name="titre", type="string", length=50, nullable=false)
-     * @Assert\NotBlank(message="Le nom ne doit pas être vide")
+     * @Assert\NotBlank(message="Le titre ne doit pas être vide")
      * @Assert\Length(max=20, maxMessage="Le contenu doit dépasser 20 caractères")
      */
     private $titre;
@@ -44,7 +44,7 @@ class Reclamation
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=254, nullable=false)
-     * @Assert\NotBlank(message="Le nom ne doit pas être vide")
+     * @Assert\NotBlank(message="La description ne doit pas être vide")
      * @Assert\Length(min=10, maxMessage="Le contenu doit dépasser 10 caractères")
      */
     private $description;
@@ -53,7 +53,7 @@ class Reclamation
      * @var string
      *
      * @ORM\Column(name="tel", type="string", length=20, nullable=false)
-     * @Assert\NotBlank(message="Le nom ne doit pas être vide")
+     * @Assert\NotBlank(message="Le numéro ne doit pas être vide")
      * @Assert\Regex(
  *     pattern="/^[0-9]{8}$/",
  *     message="Le numéro doit être en 8 chiffres"

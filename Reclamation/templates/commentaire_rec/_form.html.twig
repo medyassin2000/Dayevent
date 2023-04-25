@@ -1,7 +1,6 @@
-{{ form_start(form, {'attr': {'novalidate':'novalidate'}}) }}
+{{ form_start(form, {'action': path('commentairerec_send_sms'), 'attr': {'novalidate':'novalidate'}}) }}
     {{ form_widget(form) }}
    <button type="submit" class="btn btn-save">{{ button_label|default('Save') }}</button>
-
 <style>
 .btn-save {
   background-color: #007bff;
