@@ -1,10 +1,18 @@
 security:
+    encoders:
+        App\Entity\Utilisateur:
+            algorithm: bcrypt
+
     enable_authenticator_manager: true
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
+        app_user_provider:
+            entity:
+                class: App\Entity\Utilisateur
+                property: email
         users_in_memory: { memory: null }
     firewalls:
         dev:
@@ -13,9 +21,7 @@ security:
         main:
             lazy: true
             provider: users_in_memory
-            custom_authenticator: App\Security\AppCustomAuthenticator
-            logout:
-                path: app_logout
+           
                 # where to redirect after logout
                 # target: app_any_route
 

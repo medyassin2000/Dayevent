@@ -5,7 +5,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 
-
 use App\Entity\Utilisateur;
 use App\Form\UtilisateurType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -99,12 +98,11 @@ public function new(Request $request, EntityManagerInterface $entityManager, Val
         return $this->render('index1.html.twig');
     }
 
-    #Route('/login', name:'app_utilisateur_login')
-    public function loginindex() : Response
-    {
+    
+    
+    
+    
 
-        return $this->render('login.html.twig');
-    }
-
+   
 
 }

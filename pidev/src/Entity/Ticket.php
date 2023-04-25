@@ -52,5 +52,58 @@ class Ticket
      */
     private $idEvenement;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getPrix(): ?float
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(float $prix): self
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getNbTickets(): ?int
+    {
+        return $this->nbTickets;
+    }
+
+    public function setNbTickets(int $nbTickets): self
+    {
+        $this->nbTickets = $nbTickets;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getIdEvenement(): ?Evenement
+    {
+        return $this->idEvenement;
+    }
+
+    public function setIdEvenement(?Evenement $idEvenement): self
+    {
+        $this->idEvenement = $idEvenement;
+
+        return $this;
+    }
+
 
 }

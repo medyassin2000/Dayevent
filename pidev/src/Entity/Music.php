@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -41,6 +42,47 @@ class Music
      * @ORM\Column(name="fichier", type="blob", length=65535, nullable=false)
      */
     private $fichier;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getNomMorceaux(): ?string
+    {
+        return $this->nomMorceaux;
+    }
+
+    public function setNomMorceaux(string $nomMorceaux): self
+    {
+        $this->nomMorceaux = $nomMorceaux;
+
+        return $this;
+    }
+
+    public function getNomArtiste(): ?string
+    {
+        return $this->nomArtiste;
+    }
+
+    public function setNomArtiste(string $nomArtiste): self
+    {
+        $this->nomArtiste = $nomArtiste;
+
+        return $this;
+    }
+
+    public function getFichier()
+    {
+        return $this->fichier;
+    }
+
+    public function setFichier($fichier): self
+    {
+        $this->fichier = $fichier;
+
+        return $this;
+    }
 
 
 }

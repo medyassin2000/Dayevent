@@ -52,5 +52,58 @@ class CommandeTicket
      */
     private $idUtilisateur;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getNomEvenement(): ?string
+    {
+        return $this->nomEvenement;
+    }
+
+    public function setNomEvenement(string $nomEvenement): self
+    {
+        $this->nomEvenement = $nomEvenement;
+
+        return $this;
+    }
+
+    public function getPrix(): ?float
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(float $prix): self
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getIdTicket(): ?int
+    {
+        return $this->idTicket;
+    }
+
+    public function setIdTicket(int $idTicket): self
+    {
+        $this->idTicket = $idTicket;
+
+        return $this;
+    }
+
+    public function getIdUtilisateur(): ?Utilisateur
+    {
+        return $this->idUtilisateur;
+    }
+
+    public function setIdUtilisateur(?Utilisateur $idUtilisateur): self
+    {
+        $this->idUtilisateur = $idUtilisateur;
+
+        return $this;
+    }
+
 
 }

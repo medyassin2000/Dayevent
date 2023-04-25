@@ -19,8 +19,11 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
  * @ORM\Table(name="utilisateur")
  * @ORM\Entity
  */
-#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
-class Utilisateur  implements UserInterface,PasswordAuthenticatedUserInterface
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\UtilisateurRepository")
+ */
+
+class Utilisateur  implements UserInterface
 {
     /**
      * @var int
@@ -67,7 +70,7 @@ private $nom;
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=30, nullable=false)
+     * @ORM\Column(name="email", type="string", length=30, nullable=true)
      * @Assert\NotBlank(message="L'email ne doit pas être vide")
     * @Assert\Regex(     pattern="/.*@.*$/",     message="L adresse email doit contenir le symbole @")
      */
@@ -89,8 +92,7 @@ private $nom;
      */
     private $datenaiss;
 
-    #[ORM\Column(type: 'boolean')]
-    private $isVerified = false;
+    
 
     public function getId(): ?int
     {
@@ -185,9 +187,9 @@ private $nom;
         return $this->email;
     }
 
-    public function getRoles(): array
+    public function getRoles()
     {
-        return [$this->role];
+        
     }
 
     public function getPassword(): string
@@ -195,11 +197,11 @@ private $nom;
         return $this->motDePasse;
     }
 
-    public function getSalt(): ?string
+    public function getSalt()
     {
         // you do not need to use a salt with modern password hashing
         // see https://auth0.com/blog/adding-salt-to-hashing-a-better-way-to-store-passwords/
-        return null;
+        
     }
 
     public function eraseCredentials(): void

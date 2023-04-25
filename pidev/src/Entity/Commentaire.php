@@ -38,5 +38,34 @@ class Commentaire
      */
     private $idUtilisateur;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getTexte(): ?string
+    {
+        return $this->texte;
+    }
+
+    public function setTexte(string $texte): self
+    {
+        $this->texte = $texte;
+
+        return $this;
+    }
+
+    public function getIdUtilisateur(): ?Utilisateur
+    {
+        return $this->idUtilisateur;
+    }
+
+    public function setIdUtilisateur(?Utilisateur $idUtilisateur): self
+    {
+        $this->idUtilisateur = $idUtilisateur;
+
+        return $this;
+    }
+
 
 }

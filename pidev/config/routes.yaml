@@ -8,3 +8,9 @@ app_utilisateur_frontend :
 app_utilisateur_login :
  path: /login.html
  controller: App\Controller\UtilisateurController::loginindex
+send_email:
+ path: /send-email
+ controller: App\Controller\SecurityController::sendEmail
+app_logout:
+    path: /app_logout
+    controller: App\Controller\SecurityController::logout
