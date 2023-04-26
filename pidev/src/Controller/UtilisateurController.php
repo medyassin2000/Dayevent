@@ -99,7 +99,20 @@ public function new(Request $request, EntityManagerInterface $entityManager, Val
     }
 
     
-    
+    #[Route('/mayar', name:'app_user')]
+     
+    public function showUtilisateurs(): Response
+    {
+        $utilisateurs = $this->getDoctrine()->getRepository(Utilisateur::class)->findAll();
+        usort($utilisateurs, function($a, $b) {
+            return strcmp($a->getNom(), $b->getNom());
+        });
+        return $this->render('utilisateur/index.html.twig', [
+            'utilisateurs' => $utilisateurs,
+        ]);
+    }
+
+
     
     
 

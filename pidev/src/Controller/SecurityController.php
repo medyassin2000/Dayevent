@@ -80,7 +80,7 @@ public function logout(): Response
     {
         $to = 'mayar.hmidi@esprit.tn';
         $subject = 'Test email';
-        $body = 'This is a test email.';
+        $body = 'This is a test email';
 
         $mailService->sendEmail($to, $subject, $body);
 

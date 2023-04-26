@@ -115,7 +115,7 @@ class ResetPasswordController extends AbstractController
                 $form->get('plainPassword')->getData()
             );
 
-            $user->getMotDePasse($encodedPassword);
+            $user->getPassword($encodedPassword);
             $this->entityManager->flush();
 
             // The session is cleaned up after the password has been changed.
@@ -157,7 +157,7 @@ class ResetPasswordController extends AbstractController
         }
 
         $email = (new TemplatedEmail())
-            ->from(new Address('mayarhmidi9@gmail.com', 'mayar hmidi'))
+            ->from(new Address('mayar.hmidi9@gmail.com', 'DayEvent'))
             ->to($user->getEmail())
             ->subject('Your password reset request')
             ->htmlTemplate('reset_password/email.html.twig')

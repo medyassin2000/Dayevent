@@ -14,3 +14,6 @@ send_email:
 app_logout:
     path: /app_logout
     controller: App\Controller\SecurityController::logout
+app_user:
+    path: /mayar
+    controller: App\Controller\UtilisateurController::showUtilisateurs
