@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Form;
+use App\Validateur\pasgrosmot;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -10,13 +11,17 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
+use Symfony\Component\Validator\Constraints\Regex;
+
+
 
 class CommentairetestType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('texte')
+        ->add('texte')
+
             ->add('id_utilisateur')
             ->add('id_evenement', IntegerType::class, [
                 'attr' => ['readonly' => true], ])

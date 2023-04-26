@@ -32,7 +32,7 @@
                         </div>
                         
                         
-                        <a href="{{ path('eventpage',{'id':b.id}) }}" class="primary-btn border-btn">Acheter tickets</a>
+                        <a href="{{ path('seatchart') }}" class="primary-btn border-btn">Acheter tickets</a>
                     </div>
                 </div>
                 
@@ -94,6 +94,7 @@
                   <label for="inputText" class="col-sm-3 col-form-label">Commentaire</label>
                   <div class="col-sm-9">
                     {{ form_widget(form.texte,{'attr':{'class':'form-control'}}) }}
+                    {{ form_errors(form.texte) }}
                   </div>
                 </div>
                 

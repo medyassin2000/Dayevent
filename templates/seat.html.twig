@@ -1,57 +1,72 @@
-<!DOCTYPE html>
-<html>
- <body>
-    <h1>Seat Chart</h1>
+{% extends 'baseclient.html.twig' %}
+{% block body %}
+<section class="tours spad">
+        <div class="container">
+    <h3>Choisir Votre Place Dans le Thearte</h3>
+    <div style="display: flex;align-items: center;justify-content: center;margin-top: 150px;margin-bottom: 500px; padding: 10px;">
+        <table>
+            {% for row in 1..10 %}
+                <tr>
+                    {% for seat in 1..10 %}
+                        {% set seatObject = seats|filter(s => s.seatNumber == seat and s.rowNumber == row)|first %}
 
-    <table>
-        {% for row in 1..10 %}
-            <tr>
-                {% for seat in 1..10 %}
-                    {% set seatObject = seats|filter(s => s.seatNumber == seat and s.rowNumber == row)|first %}
+                        {% if seatObject %}
+                            <td>
+                                <button type="button" class="seat 
+                                {% if seatObject.status == 'reserved' %}reserved{% else %}available{% endif %}"
+                                    data-seat-id="{{ seatObject.id }}" 
+                                    {% if seatObject.status == 'reserved' %}disabled{% endif %}>
+                                    {{ seatObject.rowNumber }}{{ seatObject.seatNumber }}
+                                </button>
+                            </td>
+                        {% else %}
+                            <td></td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
 
-                    {% if seatObject %}
-                        <td>
-                            <button type="button" class="seat {% if seatObject.status == 'reserved' %}reserved{% else %}available{% endif %}"
-                                    data-seat-id="{{ seatObject.id }}" {% if seatObject.status == 'reserved' %}disabled{% endif %}>
-                                {{ seatObject.rowNumber }}/{{ seatObject.seatNumber }}
-                            </button>
-                        </td>
-                    {% else %}
-                        <td></td>
-                    {% endif %}
-                {% endfor %}
-            </tr>
-        {% endfor %}
-    </table>
+        <style>
+            .available {
+                background-color: #87CEEB;
+            }
 
-    <script>
-        const buttons = document.querySelectorAll('.seat');
+            .reserved {
+                background-color: grey;
+            }
+        </style>
 
-        buttons.forEach(button => {
-            const seatId = button.getAttribute('data-seat-id');
+        <script>
+            const buttons = document.querySelectorAll('.seat');
 
-            button.addEventListener('click', () => {
-                if (button.classList.contains('reserved')) {
-                    return;
-                }
+            buttons.forEach(button => {
+                const seatId = button.getAttribute('data-seat-id');
 
-                const status = button.classList.contains('available') ? 'reserved' : 'available';
-
-                fetch(`/reserve-seat/${seatId}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ status })
-                }).then(response => {
-                    if (response.ok) {
-                        button.classList.toggle('available');
-                        button.classList.toggle('reserved');
-                        button.disabled = button.classList.contains('reserved');
+                button.addEventListener('click', () => {
+                    if (button.classList.contains('reserved')) {
+                        return;
                     }
+
+                    const status = button.classList.contains('available') ? 'reserved' : 'available';
+
+                    fetch(`/reserve-seat/${seatId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ status })
+                    }).then(response => {
+                        if (response.ok) {
+                            button.classList.toggle('available');
+                            button.classList.toggle('reserved');
+                            button.disabled = button.classList.contains('reserved');
+                        }
+                    });
                 });
             });
-        });
-    </script>
-</body>
-</html>
+        </script>
+    </div>
+ </div>
+        </section>
+ {% endblock %}

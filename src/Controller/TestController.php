@@ -243,20 +243,33 @@ public function placeStatistics()
     $em = $this->getDoctrine()->getManager();
     $places = $em->getRepository(Evenement::class)->createQueryBuilder('e')
     
-        ->select('e.lieu, COUNT(e.id) as count')
+        ->select('e.lieu, COUNT(e.id) as NBEvents')
         ->groupBy('e.lieu')
         ->getQuery()
         ->getResult();
 
     // Build the chart data
-    $data = [['Lieu', 'Count']];
+    $data = [['Lieu', 'NBEvents']];
     foreach ($places as $place) {
-        $data[] = [$place['lieu'], $place['count']];
-    }
+        $data[] = [$place['lieu'], $place['NBEvents']];
 
+    }
+    //--------------------
+    $p = $em->getRepository(Evenement::class)->createQueryBuilder('e')
+    
+        ->select('e.nom,e.nb_ticket as Nb_Place_Restant')
+        ->groupBy('e.nom')
+        ->getQuery()
+        ->getResult();
+        $priceChartData = [['Nom', 'Nb_Place_Restant']];
+        foreach ($p as $price) {
+            $priceChartData[] = [$price['nom'], $price['Nb_Place_Restant']];
+    
+        }
     // Render the chart
     return $this->render('statistics/bar.html.twig', [
         'chartData' => json_encode($data),
+        'priceChartData' => json_encode($priceChartData),
     ]);
 }
   /**

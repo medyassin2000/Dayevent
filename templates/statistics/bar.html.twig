@@ -12,12 +12,12 @@
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
         function drawChart() {
-            var jsonData = {{ chartData|raw }};
+            var jsonData = {{ priceChartData|raw }};
             var data = google.visualization.arrayToDataTable(jsonData);
             var options = {
-                title: 'Statistics Lieu',
+                title: 'Statistics Sur Les Places Restantes Dans Les Spectacles',
                 legend: { position: 'none' },
-                chartArea: {width: '30%'},
+                chartArea: {width: '30%',height: '80%'},
                 hAxis: {
                     title: 'Nombre d evenement ',
                     minValue: 0
@@ -30,6 +30,28 @@
             chart.draw(data, options);
         }
     </script>
-    <div id="chart_div" style="margin-top: 20px;width: 100%; height: 500px;"></div>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart1);
+
+function drawChart1() {
+    var jsonData = {{ chartData|raw }};
+    var data = google.visualization.arrayToDataTable(jsonData);
+    var options = {
+        title: 'Statistics NB Events/Lieu  ',
+        legend: { position: 'right' },
+        chartArea: {width: '50%', height: '80%'},
+        pieHole: 0.4,
+        pieSliceText: 'label'
+    };
+    var chart = new google.visualization.PieChart(document.getElementById('prixchart_div'));
+    chart.draw(data, options);
+}
+
+    </script>
+    <div id="chart_div" style="margin-top: 100px;width: 100%; height: 500px;"></div>
+    <div id="prixchart_div" style="margin-top: 50px;margin-left: 200px;width: 100%; height: 500px;"></div>
 {% endblock %}
 

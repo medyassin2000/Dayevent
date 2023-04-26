@@ -4,7 +4,8 @@ namespace App\Entity;
 
 use App\Repository\CommentairetestRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
+use App\Validator\BadWordValidator;
 /**
  * @ORM\Entity(repositoryClass=CommentairetestRepository::class)
  */
@@ -19,7 +20,14 @@ class Commentairetest
 
     /**
      * @ORM\Column(type="string", length=255)
-     */
+     *  * @Assert\Regex(
+ *     pattern="/bad|test/i",
+ *     match=false,
+ *     message="N'utilise pas les gros mots."
+ * )
+ */
+     
+    
     private $texte;
     
     /**

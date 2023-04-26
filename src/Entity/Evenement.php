@@ -31,7 +31,7 @@ class Evenement
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length( * min = 5, * max = 50, 
+     * @Assert\Length( * min = 3, * max = 50, 
     * * minMessage = "Le nom  doit comporter au moins {{ limit }} caractères",
     *  * maxMessage = "Le nom  doit comporter au plus {{ limit }} caractères" * )
     * * @Assert\NotBlank( message="Ne doit pas être vide")
@@ -51,12 +51,13 @@ class Evenement
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="date", nullable=false)
+     *  @Assert\GreaterThanOrEqual("today", message="La Date doit etre au minimum d'aujourd'hui")
      */
     private $date;
 
     /**
      * @ORM\Column(type="integer", length=255)
-     * * @Assert\Length( * min = 5, * max = 50, 
+     * * @Assert\Length( * min = 2, * max = 50, 
     * * minMessage = "Le nom  doit comporter au moins {{ limit }} caractères",
     *  * maxMessage = "Le nom  doit comporter au plus {{ limit }} caractères" * )
     * * @Assert\NotBlank( message="Ne doit pas être vide")
