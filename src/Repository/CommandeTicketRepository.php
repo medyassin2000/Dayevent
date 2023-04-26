@@ -3,8 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\CommandeTicket;
+use App\Entity\PropertySearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
+//use Doctrine\DBAL\Query;
 
 /**
  * @extends ServiceEntityRepository<CommandeTicket>
@@ -38,6 +41,34 @@ class CommandeTicketRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    public function search($query)
+{
+    return $this->createQueryBuilder('ct')
+        ->where('ct.nomEvenement LIKE :query')
+        ->orWhere('ct.prix LIKE :query')
+        ->setParameter('query', '%'.$query.'%')
+        ->orderBy('ct.nomEvenement', 'ASC')
+        ->getQuery()
+        ->getResult();
+}
+
+    /*public function search($nomEvenement, $prix)
+    {
+        $qb = $this->createQueryBuilder('ct');
+
+        if ($nomEvenement) {
+            $qb->andWhere('ct.nomEvenement LIKE :nomEvenement')
+                ->setParameter('nomEvenement', '%'.$nomEvenement.'%');
+        }
+
+        if ($prix) {
+            $qb->andWhere('ct.prix = :prix')
+                ->setParameter('prix', $prix);
+        }
+
+        return $qb->getQuery()->getResult();
+    }*/
 
 //    /**
 //     * @return CommandeTicket[] Returns an array of CommandeTicket objects

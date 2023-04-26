@@ -9,6 +9,9 @@ return [
     false, // $matchHost
     [ // $staticRoutes
         '/commande/ticket' => [[['_route' => 'app_commande_ticket_index', '_controller' => 'App\\Controller\\CommandeTicketController::index'], null, ['GET' => 0], null, true, false, null]],
+        '/commande/ticket/search' => [[['_route' => 'app_commande_ticket_search', '_controller' => 'App\\Controller\\CommandeTicketController::search'], null, null, null, false, false, null]],
+        '/commande/ticket/triNE' => [[['_route' => 'app_commande_ticket_index_triNE', '_controller' => 'App\\Controller\\CommandeTicketController::indextriNE'], null, ['GET' => 0], null, false, false, null]],
+        '/commande/ticket/triP' => [[['_route' => 'app_commande_ticket_index_triP', '_controller' => 'App\\Controller\\CommandeTicketController::indextriP'], null, ['GET' => 0], null, false, false, null]],
         '/commande/ticket/new' => [[['_route' => 'app_commande_ticket_new', '_controller' => 'App\\Controller\\CommandeTicketController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/commande/ticket/newF' => [[['_route' => 'app_commande_ticket_newF', '_controller' => 'App\\Controller\\CommandeTicketController::newF'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/ticket' => [[['_route' => 'app_ticket_index', '_controller' => 'App\\Controller\\TicketController::index'], null, ['GET' => 0], null, true, false, null]],

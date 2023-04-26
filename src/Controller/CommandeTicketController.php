@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\CommandeTicket;
+use App\Entity\PropertySearch;
 use App\Form\CommandeTicketType;
+use App\Form\PropertySearchType;
 use App\Repository\CommandeTicketRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,6 +18,7 @@ use Dompdf\Options;
 #[Route('/commande/ticket')]
 class CommandeTicketController extends AbstractController
 {
+    
     #[Route('/', name: 'app_commande_ticket_index', methods: ['GET'])]
     public function index(EntityManagerInterface $entityManager): Response
     {
@@ -27,6 +30,91 @@ class CommandeTicketController extends AbstractController
             'commande_tickets' => $commandeTickets,
         ]);
     }
+
+    // @Route("/tri", name="reclamations_show")
+    
+    /*public function showReclamations(): Response
+    {
+        $commandeTickets = $this->getDoctrine()->getRepository(CommandeTicket::class)->findAll();
+        usort($commandeTickets, function($a, $b) {
+            return strcmp($a->getNomEvenement(), $b->getPrix());
+        });
+        return $this->render('commande_ticket/index.html.twig', [
+            'commande_tickets' => $commandeTickets,
+        ]);
+    }*/
+
+    /**
+     * @Route("/search", name="app_commande_ticket_search")
+     */
+    public function search(Request $request, CommandeTicketRepository $repository)
+    {
+        $searchTerm = $request->query->get('q');
+
+        $commandeTickets = $repository->search($searchTerm);
+
+        return $this->render('commande_ticket/index.html.twig', [
+            'commande_tickets' => $commandeTickets,
+        ]);
+    }
+
+    /*
+    @Route("/search", name="app_commande_ticket_search")
+    public function search(Request $request, CommandeTicketRepository $repository)
+    {
+        $nomEvenement = $request->query->get('nomEvenement');
+        $prix = $request->query->get('prix');
+
+        $commandeTickets = $repository->search($nomEvenement, $prix);
+
+        return $this->render('commande_ticket/index.html.twig', [
+            'commande_tickets' => $commandeTickets
+        ]);
+    }*/
+
+    #[Route('/triNE', name: 'app_commande_ticket_index_triNE', methods: ['GET'])]
+    public function indextriNE(EntityManagerInterface $entityManager): Response
+    {
+        $commandeTickets = $entityManager
+            ->getRepository(CommandeTicket::class)
+            ->findAll();
+        usort($commandeTickets, function($a, $b) {
+            return strcmp($a->getNomEvenement(), $b->getNomEvenement());
+        });
+
+        return $this->render('commande_ticket/index.html.twig', [
+            'commande_tickets' => $commandeTickets,
+        ]);
+    }
+    #[Route('/triP', name: 'app_commande_ticket_index_triP', methods: ['GET'])]
+    public function indextriP(EntityManagerInterface $entityManager): Response
+    {
+        $commandeTickets = $entityManager
+            ->getRepository(CommandeTicket::class)
+            ->findAll();
+        usort($commandeTickets, function($a, $b) {
+            return strcmp($a->getPrix(), $b->getPrix());
+        });
+
+        return $this->render('commande_ticket/index.html.twig', [
+            'commande_tickets' => $commandeTickets,
+        ]);
+    }
+
+    /**#[Route('/search', name: 'app_commande_ticket_search', methods: ['GET'])]
+    public function search(Request $request, CommandeTicketRepository $commandeTicketRepository): Response
+    {
+        $search = new PropertySearch();
+        $form = $this->createForm(PropertySearchType::class, $search);
+        $form->handleRequest($request);
+
+        $commandeTickets = $commandeTicketRepository->findAllVisibleQuery($search);
+
+        return $this->render('commande_ticket/index.html.twig', [
+            'commande_tickets' => $commandeTickets,
+            'form' => $form->createView(),
+        ]);
+    }*/
 
     #[Route('/new', name: 'app_commande_ticket_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response

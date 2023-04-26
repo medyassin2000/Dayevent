@@ -4,6 +4,9 @@
 
 return [
     'app_commande_ticket_index' => [[], ['_controller' => 'App\\Controller\\CommandeTicketController::index'], [], [['text', '/commande/ticket/']], [], [], []],
+    'app_commande_ticket_search' => [[], ['_controller' => 'App\\Controller\\CommandeTicketController::search'], [], [['text', '/commande/ticket/search']], [], [], []],
+    'app_commande_ticket_index_triNE' => [[], ['_controller' => 'App\\Controller\\CommandeTicketController::indextriNE'], [], [['text', '/commande/ticket/triNE']], [], [], []],
+    'app_commande_ticket_index_triP' => [[], ['_controller' => 'App\\Controller\\CommandeTicketController::indextriP'], [], [['text', '/commande/ticket/triP']], [], [], []],
     'app_commande_ticket_new' => [[], ['_controller' => 'App\\Controller\\CommandeTicketController::new'], [], [['text', '/commande/ticket/new']], [], [], []],
     'app_commande_ticket_newF' => [[], ['_controller' => 'App\\Controller\\CommandeTicketController::newF'], [], [['text', '/commande/ticket/newF']], [], [], []],
     'app_commande_ticket_show' => [['id'], ['_controller' => 'App\\Controller\\CommandeTicketController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/commande/ticket']], [], [], []],

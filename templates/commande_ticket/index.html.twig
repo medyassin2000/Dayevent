@@ -1,19 +1,25 @@
 {% extends 'back.html.twig' %}
 
-
 {% block title %} CommandeTicket index {% endblock %}
 
 {% block body %}
-    <h1>CommandeTicket index</h1>
+    <div class="input-group">
+        <input type="text" id="search" class="form-control" placeholder="Recherche...">
+    </div>
+
+
+    <a href="{{ path('app_commande_ticket_search') }}" class="btn btn-primary1">sans tri </a>
+    <a href="{{ path('app_commande_ticket_index_triNE') }}" class="btn btn-primary1">Tri par NomEvenement </a>
+    <a href="{{ path('app_commande_ticket_index_triP') }}" class="btn btn-primary1">Tri par Prix </a>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>NomEvenement</th>
-                <th>Prix</th>
-                <th>IdTicket</th>
-                <th>actions</th>
+            <th>Id</th>
+            <th>NomEvenement</th>
+            <th>Prix</th>
+            <th>IdTicket</th>
+            <th>actions</th>
             </tr>
         </thead>
         <tbody>
@@ -37,4 +43,46 @@
     </table>
 
     <a href="{{ path('app_commande_ticket_new') }}">Create new</a>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function sortCommandes() {
+            var rows = document.querySelectorAll("table tbody tr");
+            var arr = [];
+            for (var i = 0; i < rows.length; i++) {
+                arr.push(rows[i]);
+            }
+            arr.sort(function(a, b) {
+                var aDate = new Date(a.cells[0].textContent);
+                var bDate = new Date(b.cells[0].textContent);
+                return aDate - bDate;
+            });
+            for (var i = 0; i < arr.length; i++) {
+                document.querySelector("table tbody").appendChild(arr[i]);
+            }
+        }
+        
+        $(document).ready(function() {
+            // Function to trigger search when search fields change
+            function search() {
+            var searchTerm = $('#search').val();
+            $.ajax({
+                url: '{{ path('app_commande_ticket_search') }}',
+                type: 'GET',
+                data: {
+                    q: searchTerm
+                },
+                success: function(response) {
+                    $('tbody').html(response);
+                }
+            });
+            }
+            // Trigger search when search field changes
+            $('#search').on('input', function() {
+                search();
+            });
+        });
+    </script>
+
+
 {% endblock %}

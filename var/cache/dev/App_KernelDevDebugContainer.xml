@@ -6636,6 +6636,12 @@
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
+    <service id=".service_locator.BB4TMLI" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repository" type="service_closure" id="App\Repository\CommandeTicketRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.x52HXCg" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6662,7 +6668,7 @@
         <argument key="ticket" type="service_closure" id=".errored..service_locator.1yLvbZ8.App\Entity\Ticket"/>
       </argument>
     </service>
-    <service id=".service_locator.7etCdXs" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.4Ko3DyY" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\CommandeTicketController::delete" type="service_closure" id=".service_locator.TErqy7R"/>
@@ -6670,8 +6676,11 @@
         <argument key="App\Controller\CommandeTicketController::edit" type="service_closure" id=".service_locator.TErqy7R"/>
         <argument key="App\Controller\CommandeTicketController::editF" type="service_closure" id=".service_locator.TErqy7R"/>
         <argument key="App\Controller\CommandeTicketController::index" type="service_closure" id=".service_locator.aKM6MDa"/>
+        <argument key="App\Controller\CommandeTicketController::indextriNE" type="service_closure" id=".service_locator.aKM6MDa"/>
+        <argument key="App\Controller\CommandeTicketController::indextriP" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Controller\CommandeTicketController::new" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Controller\CommandeTicketController::newF" type="service_closure" id=".service_locator.aKM6MDa"/>
+        <argument key="App\Controller\CommandeTicketController::search" type="service_closure" id=".service_locator.BB4TMLI"/>
         <argument key="App\Controller\CommandeTicketController::show" type="service_closure" id=".service_locator.x52HXCg"/>
         <argument key="App\Controller\CommandeTicketController::showF" type="service_closure" id=".service_locator.x52HXCg"/>
         <argument key="App\Controller\TicketController::delete" type="service_closure" id=".service_locator.1yLvbZ8"/>
@@ -6689,8 +6698,11 @@
         <argument key="App\Controller\CommandeTicketController:edit" type="service_closure" id=".service_locator.TErqy7R"/>
         <argument key="App\Controller\CommandeTicketController:editF" type="service_closure" id=".service_locator.TErqy7R"/>
         <argument key="App\Controller\CommandeTicketController:index" type="service_closure" id=".service_locator.aKM6MDa"/>
+        <argument key="App\Controller\CommandeTicketController:indextriNE" type="service_closure" id=".service_locator.aKM6MDa"/>
+        <argument key="App\Controller\CommandeTicketController:indextriP" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Controller\CommandeTicketController:new" type="service_closure" id=".service_locator.aKM6MDa"/>
         <argument key="App\Controller\CommandeTicketController:newF" type="service_closure" id=".service_locator.aKM6MDa"/>
+        <argument key="App\Controller\CommandeTicketController:search" type="service_closure" id=".service_locator.BB4TMLI"/>
         <argument key="App\Controller\CommandeTicketController:show" type="service_closure" id=".service_locator.x52HXCg"/>
         <argument key="App\Controller\CommandeTicketController:showF" type="service_closure" id=".service_locator.x52HXCg"/>
         <argument key="App\Controller\TicketController:delete" type="service_closure" id=".service_locator.1yLvbZ8"/>
@@ -7322,12 +7334,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.7etCdXs"/>
+      <argument type="service" id=".service_locator.4Ko3DyY"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.7etCdXs"/>
+      <argument type="service" id=".service_locator.4Ko3DyY"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -8301,7 +8313,7 @@
     <service id="karser_recaptcha3.google.request_method" alias="karser_recaptcha3.google.request_method.curl_post"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.7etCdXs"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.4Ko3DyY"/>
     <service id="session" alias=".session.do-not-use" public="true">
       <deprecated package="symfony/framework-bundle" version="5.3">The "%alias_id%" service and "SessionInterface" alias are deprecated, use "$requestStack-&gt;getSession()" instead.</deprecated>
     </service>
@@ -8326,7 +8338,7 @@
     <service id=".service_locator.h8Jkkd2" alias="messenger.retry_strategy_locator"/>
     <service id=".service_locator.0GV1BZZ" alias=".service_locator.gSv9zYw"/>
     <service id=".service_locator.Fzu0Hyn" alias=".service_locator.1yLvbZ8"/>
-    <service id=".service_locator.F7NrQcb" alias=".service_locator.7etCdXs"/>
+    <service id=".service_locator.OZuPrBi" alias=".service_locator.4Ko3DyY"/>
     <service id=".service_locator.olGN41B" alias=".service_locator.sTIRclW"/>
     <service id=".service_locator.FPO8.6Y" alias=".service_locator.oc5RJhL"/>
     <service id=".service_locator.nk0lT0X" alias=".service_locator.1kmbKC8"/>
@@ -8355,6 +8367,7 @@
     <service id="doctrine.orm.default_metadata_driver" alias=".doctrine.orm.default_metadata_driver"/>
     <service id=".service_locator.uo5c0SP" alias=".service_locator.xUrKPVU"/>
     <service id=".service_locator.bInR.ll" alias=".service_locator.aKM6MDa"/>
+    <service id=".service_locator.t8RIHsZ" alias=".service_locator.BB4TMLI"/>
     <service id=".service_locator.WnbLVEE" alias=".service_locator.x52HXCg"/>
     <service id=".service_locator.S3PpEAH" alias=".service_locator.TErqy7R"/>
     <service id=".service_locator.MA7ERY3" alias=".service_locator.7Txv_C4"/>
