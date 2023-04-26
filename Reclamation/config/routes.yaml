@@ -29,4 +29,6 @@ download_remote_pdf:
 commentairerec_send_sms:
     path: /send-sms
     controller: App\Controller\CommentaireRecController::sendSms
-
+reclamation_show:
+    path: /tri
+    controller: App\Controller\ReclamationController::showReclamations

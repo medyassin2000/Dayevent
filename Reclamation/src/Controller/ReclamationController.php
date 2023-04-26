@@ -160,6 +160,20 @@ public function list(Request $request, ReclamationRepository $reclamationReposit
 
         ]);
     }
+
+      
+     // @Route("/reclamations#", name="reclamations_show")
+     
+    public function showReclamations(): Response
+    {
+        $reclamations = $this->getDoctrine()->getRepository(Reclamation::class)->findAll();
+        usort($reclamations, function($a, $b) {
+            return strcmp($a->getTitre(), $b->getTitre());
+        });
+        return $this->render('reclamation/index.html.twig', [
+            'reclamations' => $reclamations,
+        ]);
+    }
     
 
 }

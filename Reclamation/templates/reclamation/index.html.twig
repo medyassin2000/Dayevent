@@ -31,33 +31,30 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">Pas de reclamations trouvées</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
     <a href="{{ path('app_reclamation_new') }}">Create new</a>
-     <button id="pdf-button" type="button" class="btn btn-save1">{{ button_label|default('PDF') }}</button>
+     <a href="{{ path('reclamation_show') }}" class="btn btn-primary1">Tri par titre</a>
 
 <script>
-  var pdfButton = document.getElementById("pdf-button");
-  pdfButton.addEventListener("click", function() {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "/generate-pdf", true);
-    xhr.responseType = "blob";
-    xhr.onload = function() {
-      if (this.status === 200) {
-        var blob = new Blob([this.response], { type: "application/pdf" });
-        var link = document.createElement("a");
-        link.href = window.URL.createObjectURL(blob);
-        link.download = "document.pdf";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }
-    };
-    xhr.send();
-  });
+  function sortReclamations() {
+            var rows = document.querySelectorAll("table tbody tr");
+            var arr = [];
+            for (var i = 0; i < rows.length; i++) {
+                arr.push(rows[i]);
+            }
+            arr.sort(function(a, b) {
+                var aDate = new Date(a.cells[0].textContent);
+                var bDate = new Date(b.cells[0].textContent);
+                return aDate - bDate;
+            });
+            for (var i = 0; i < arr.length; i++) {
+                document.querySelector("table tbody").appendChild(arr[i]);
+            }
+        }
 </script>
 {% endblock %}
