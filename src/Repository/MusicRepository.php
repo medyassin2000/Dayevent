@@ -48,7 +48,18 @@ class MusicRepository extends ServiceEntityRepository
     
     return $qb->getQuery()->getResult();
 }
-
+public function findByNom($value): QueryBuilder
+{
+   $qb= $this->createQueryBuilder('m');
+        $qb->andWhere('m.nomMorceaux LIKE :val')
+        ->setParameter('val', '%'.$value.'%')
+        //->orderBy('p.id', 'ASC')
+        //->setMaxResults(10)
+        //->getQuery()
+        //->getResult()
+    ;
+    return $qb;
+}
 
 //    /**
 //     * @return Music[] Returns an array of Music objects

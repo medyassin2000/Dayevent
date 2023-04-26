@@ -4,8 +4,12 @@
 
 {% block body %}
     <h1>Music index</h1>
-    
-       
+    <h1>Recherche de musique</h1>
+<form id="search-form">
+    <input type="text" id="search-query" name="q">
+    <button type="submit">Rechercher</button>
+</form>
+<div id="search-results"></div>
     <table class="table" class="table datatable datatable-table">
         <thead>
         <thead>
@@ -41,5 +45,50 @@
         </tbody>
     </table>
  
-      <div class="form-group"> <a href="{{ path('app_music_new') }}"  class="btn btn-primary">Create new</a>   <div class="form-group">
+      <div class="form-group"> <a href="{{ path('app_music_new') }}"  class="btn btn-primary">Create new</a>   <div class="form-group"></br>
+   <div class="form-group"> <a href="{{ path('musics_show') }}" class="btn btn-primary">Tri par nomMorceaux</a> </div>
+
+<script>
+  function sortReclamations() {
+            var rows = document.querySelectorAll("table tbody tr");
+            var arr = [];
+            for (var i = 0; i < rows.length; i++) {
+                arr.push(rows[i]);
+            }
+            arr.sort(function(a, b) {
+                var aDate = new Date(a.cells[0].textContent);
+                var bDate = new Date(b.cells[0].textContent);
+                return aDate - bDate;
+            });
+            for (var i = 0; i < arr.length; i++) {
+                document.querySelector("table tbody").appendChild(arr[i]);
+            }
+        }
+</script>
+
+
+{% endblock %}
+{% block javascripts %}
+<script>
+$(document).ready(function() {
+    $('#search-form').submit(function(event) {
+        event.preventDefault();
+        var query = $('#search-query').val();
+        $.ajax({
+            url: '{{ path('search_music') }}',
+            data: { q: query },
+            success: function(data) {
+                // Affiche les résultats dans une liste
+                var $list = $('<ul>');
+                data.forEach(function(music) {
+                    var $item = $('<li>');
+                    $item.text(music.nomMorceaux + ' - ' + music.nomArtiste);
+                    $list.append($item);
+                });
+                $('#search-results').empty().append($list);
+            }
+        });
+    });
+});
+</script>
 {% endblock %}

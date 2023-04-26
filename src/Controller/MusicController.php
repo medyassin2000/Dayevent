@@ -18,6 +18,13 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 #[Route('/music')]
 class MusicController extends AbstractController
 {
+    
+   
+   
+   
+   
+   
+   
     #[Route('/', name: 'app_music_index', methods: ['GET'])]
     public function index(EntityManagerInterface $entityManager): Response
     {
@@ -133,5 +140,33 @@ class MusicController extends AbstractController
         return $this->redirect($shareUrl);
         
     }
+    #[Route('/musics', name: 'musics_show')]
+     
+    public function showmusic(): Response
+    {
+        $music = $this->getDoctrine()->getRepository(Music::class)->findAll();
+        usort($music, function($a, $b) {
+            return strcmp($a->getNomMorceaux(), $b->getNomMorceaux());
+        });
+        return $this->render('music/index.html.twig', [
+            'music' => $music,
+        ]);
+    }
+    #[Route('/search/music', name: 'search_music', methods: ['GET'])]
+    public function search(Request $request, EntityManagerInterface $entityManager)
+    {
+        $query = $request->query->get('q'); // Récupère le paramètre "q" de la requête
+        
+        $musicRepository = $entityManager->getRepository('App:Music');
+        $results = $musicRepository->createQueryBuilder('m')
+            ->where('m.nomMorceaux LIKE :query')
+            ->setParameter('query', '%'.$query.'%')
+            ->getQuery()
+            ->getResult();
+        
+        // Retourne les résultats au format JSON
+        return new JsonResponse($results);
+    }
 
+   
 }
