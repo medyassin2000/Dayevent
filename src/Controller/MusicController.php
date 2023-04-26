@@ -31,7 +31,7 @@ class MusicController extends AbstractController
         $music = $entityManager
             ->getRepository(Music::class)
             ->findAll();
-
+   
         return $this->render('music/index.html.twig', [
             'music' => $music,
         ]);

@@ -9,17 +9,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 #[Route('/playlist')]
 class PlaylistController extends AbstractController
 {
     #[Route('/', name: 'app_playlist_index', methods: ['GET'])]
-    public function index(EntityManagerInterface $entityManager): Response
+    public function index(EntityManagerInterface $entityManager,PaginatorInterface $paginator,Request $request): Response
     {
         $playlists = $entityManager
             ->getRepository(Playlist::class)
             ->findAll();
-
+            $playlists=$paginator->paginate($playlists,$request->query->getInt('page',1),2);
         return $this->render('playlist/index.html.twig', [
             'playlists' => $playlists,
         ]);

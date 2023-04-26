@@ -19,3 +19,12 @@ app_convert_m_p3:
     path: /convert
     controller: App\Controller\ConvertMP3Controller::index
 
+musics_show:
+    path: /musics
+    controller: App\Controller\MusicController::showmusic
+
+search_music:
+    path: /search/music
+    methods: [GET]
+    controller: App\Controller\MusicController::search
+
