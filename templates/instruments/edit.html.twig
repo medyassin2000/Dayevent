@@ -5,7 +5,7 @@
 {% block body %}
     <h1>Edit Instruments</h1>
 
-    {{ include('instruments/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('instruments/new.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('app_instruments_index') }}">back to list</a>
 

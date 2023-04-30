@@ -38,6 +38,18 @@ class CategorieInstrumentRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    public function searchBynom($query)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.nomCategorie LIKE :query')
+
+            ->setParameter('query', '%' . $query . '%')
+            ->orderBy('c.nomCategorie', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
+
 
 //    /**
 //     * @return CategorieInstrument[] Returns an array of CategorieInstrument objects

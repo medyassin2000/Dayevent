@@ -62,8 +62,8 @@
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li><a href="./index.html">Home</a></li>
-                            <li class="active"><a href="./about.html">About</a></li>
-                            <li><a href="./discography.html">Discography</a></li>
+                            <li class="active"><a href="./card">Instrument</a></li>
+                            <li><a href="./ajout">Ajouter une annonce</a></li>
                             <li><a href="./tours.html">Tours</a></li>
                             <li><a href="./videos.html">Videos</a></li>
                             <li><a href="#">Pages</a>
@@ -111,4 +111,57 @@
 
 
 {% endblock %}
+
+
+<!-- Footer Section Begin -->
+{% block Footer %}
+    <!-- Footer Section Begin -->
+
+
+    <footer class="footer spad set-bg" data-setbg="frontend/img/footer-bg.png">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer__address">
+                        <ul>
+                            <li>
+                                <i class="fa fa-phone"></i>
+                                <p>Phone</p>
+                                <h6>1-677-124-44227</h6>
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope"></i>
+                                <p>Email</p>
+                                <h6>DJ.Music@gmail.com</h6>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 offset-lg-1 col-md-6">
+                    <div class="footer__social">
+                        <h2>DJoz</h2>
+                        <div class="footer__social__links">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-dribbble"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 offset-lg-1 col-md-6">
+                    <div class="footer__newslatter">
+                        <h4>Stay With me</h4>
+                        <form action="#">
+                            <input type="text" placeholder="Email">
+                            <button type="submit"><i class="fa fa-send-o"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+{% endblock %}
+
+
 </html>

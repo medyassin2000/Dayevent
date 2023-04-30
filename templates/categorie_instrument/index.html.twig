@@ -3,7 +3,34 @@
 {% block title %}CategorieInstrument index{% endblock %}
 
 {% block body %}
-    <h1>CategorieInstrument index</h1>
+<div class="card" align="center" style="margin-left: 20px">
+    <div class="input-group">
+        <input type="text" id="search" class="form-control" placeholder="Recherche...">
+    </div>
+    <script> src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>$(document).ready(function() {
+            // Function to trigger search when search fields change
+            function search() {
+                var searchTerm = $('#search').val();
+                $.ajax({
+                    url: '{{ path('search_contrat') }}',
+                    type: 'GET',
+                    data: {
+                        q: searchTerm
+                    },
+                    success: function(response) {
+                        $('tbody').html(response);
+                    }
+                });
+            }
+            // Trigger search when search field changes
+            $('#search').on('input', function() {
+                search();
+            });
+        });
+
+    </script>
+    <h1>Categorie</h1>
 
     <table class="table">
         <thead>
@@ -20,9 +47,10 @@
                 <td>{{ categorie_instrument.id }}</td>
                 <td>{{ categorie_instrument.nomCategorie }}</td>
                 <td>{{ categorie_instrument.description }}</td>
+
                 <td>
-                    <a href="{{ path('app_categorie_instrument_show', {'id': categorie_instrument.id}) }}">show</a>
-                    <a href="{{ path('app_categorie_instrument_edit', {'id': categorie_instrument.id}) }}">edit</a>
+                    <a href="{{ path('app_categorie_instrument_show', {'id': categorie_instrument.id}) }}"><button type="button" class="btn btn-dark">afficher</button></a>
+                    <a href="{{ path('app_categorie_instrument_edit', {'id': categorie_instrument.id}) }}"><button type="button" class="btn btn-dark">modifier</button></a>
                 </td>
             </tr>
         {% else %}
@@ -33,5 +61,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_categorie_instrument_new') }}">Create new</a>
+    <a href="{{ path('app_categorie_instrument_new') }}"><button type="button" class="btn btn-success">Create</button></a>
+</div>
 {% endblock %}

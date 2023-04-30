@@ -7,6 +7,7 @@ use App\Entity\Instruments;
 use App\Entity\Utilisateur;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 Use Vich\UploaderBundle\Form\Type\VichImageType;
@@ -20,8 +21,10 @@ class InstrumentsType extends AbstractType
             ->add('prix')
             ->add('photo', FileType::class, [
                 'mapped'=>false,
+
             ])
             ->add('description')
+
             ->add('idCategorie')
 
             ->add('idCategorie', EntityType::class, [

@@ -63,4 +63,24 @@ class InstrumentsRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    public function paginationQuery()
+{
+    // Crée un objet QueryBuilder pour l'entité "a"
+    return $this->createQueryBuilder('a')
+        //trier les résultats
+    ->orderBy('a.idInstrument','ASC')
+        ->getQuery()
+        ;
+
+}
+    public function search($query)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.nom LIKE :query')
+            ->setParameter('query', '%'.$query.'%')
+            ->orderBy('c.nom', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 }

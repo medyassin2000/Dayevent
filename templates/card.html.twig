@@ -1,22 +1,55 @@
 
-{% extends 'client.html.twig' %}
+{% extends 'baseclient.html.twig' %}
 
 
 {% block body %}
+    <div style="margin-top:150px;">
+    </div>
+
+
+
+
+
+
+
+
     <h1></h1>
-    <div class="row">
-        {% for instrument in instruments %}
+    <div class="row justify-content-around ">
+
+
+        {% for instrument in pagination %}
             <div class="col-md-4">
-                <div class="card">
-                    {% set file_name = instrument.photo|split('/')|last %}
-                    <img class="card-img-top" src="{{ asset('images/products/' ~ file_name) }}" alt="{{ instrument.nom }}" width="20">
+
+
+                <div class="card" style="width: 20rem;">
+
+                {% set file_name = instrument.photo|split('/')|last %}
+                    <img class="card-img-top" src="{{ asset('images/products/' ~ file_name) }}" alt="{{ instrument.nom }}" style="width: 600px;
+    height: 400px;">
                     <div class="card-body">
                         <h5 class="card-title">{{ instrument.nom }}</h5>
-                        <p class="card-text">{{ instrument.description }}</p>
-                        <p class="card-text">Prix : {{ instrument.prix }} €</p>
+                        <p class="card-text">{{ instrument.prix}}D</p>
+                        <a href="{{ path('app_instrument_detail', {'idInstrument': instrument.idInstrument}) }}" class="btn btn-primary">Detail</a>
+
+
+
                     </div>
                 </div>
             </div>
         {% endfor %}
+
     </div>
+
+
+    <img src="{{ qr }}" alt="QR code" style="height:25%;width:25%" />
+    <a href="https://www.facebook.com/profile.php?id=100092318706242"></a>
+
+    <div style="margin-left:800px;">
+
+
+        {{ knp_pagination_render(pagination, 'KnpPaginatorBundle:Pagination:my_template.html.twig') }}
+    </div>
+    <div style="margin-bottom:800px;">
+    </div>
+
 {% endblock %}

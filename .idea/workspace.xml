@@ -5,18 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="564eff37-8986-4c78-8899-26054bda873f" name="Changes" comment="second commit">
+      <change afterPath="$PROJECT_DIR$/templates/categorie_instrument/search.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/instruments/search.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/my_template.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/samara" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/products/643615ab3446f.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/products/6436173180eee.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/products/6436270a53a64.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/bootstrap-5.3.0-alpha3-dist/js/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/bootstrap-5.3.0-alpha3-dist/js/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CategorieInstrumentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CategorieInstrumentController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/InstrumentsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/InstrumentsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/CategorieInstrument.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/CategorieInstrument.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Instruments.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Instruments.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/InstrumentsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/InstrumentsType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/CategorieInstrumentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CategorieInstrumentRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/InstrumentsRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/InstrumentsRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/back.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/instruments/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/instruments/_delete_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/baseclient.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/baseclient.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/car.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/car.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/card.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/card.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/categorie_instrument/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/categorie_instrument/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/categorie_instrument/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/categorie_instrument/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/categorie_instrument/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/categorie_instrument/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/client.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/client.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/instrument.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/instrument.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/instruments/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/instruments/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/instruments/essai.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/instruments/essai.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/instruments/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/instruments/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/instruments/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/instruments/new.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/instruments/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/instruments/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/utilisateur/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/utilisateur/edit.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,6 +199,14 @@
       <path value="$PROJECT_DIR$/vendor/jms/metadata" />
       <path value="$PROJECT_DIR$/vendor/vich/uploader-bundle" />
       <path value="$PROJECT_DIR$/vendor/twbs/bootstrap" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
+      <path value="$PROJECT_DIR$/vendor/dasprid/enum" />
+      <path value="$PROJECT_DIR$/vendor/bacon/bacon-qr-code" />
+      <path value="$PROJECT_DIR$/vendor/endroid/qr-code" />
+      <path value="$PROJECT_DIR$/vendor/gedmo/doctrine-extensions" />
+      <path value="$PROJECT_DIR$/vendor/stof/doctrine-extensions-bundle" />
+      <path value="$PROJECT_DIR$/vendor/behat/transliterator" />
     </include_path>
   </component>
   <component name="ProjectId" id="2NmnLA6rtIZHSoSI6HBS8u50ORY" />
@@ -235,7 +267,25 @@
       <workItem from="1681110584581" duration="23902000" />
       <workItem from="1681170762284" duration="50101000" />
       <workItem from="1681263804178" duration="591000" />
-      <workItem from="1681264448033" duration="7317000" />
+      <workItem from="1681264448033" duration="15634000" />
+      <workItem from="1681282044512" duration="2056000" />
+      <workItem from="1681482773308" duration="11915000" />
+      <workItem from="1681514879696" duration="10287000" />
+      <workItem from="1681574538836" duration="4984000" />
+      <workItem from="1681719948899" duration="4089000" />
+      <workItem from="1681810011589" duration="472000" />
+      <workItem from="1681810953198" duration="1935000" />
+      <workItem from="1681893952733" duration="6447000" />
+      <workItem from="1682000127450" duration="4408000" />
+      <workItem from="1682166903238" duration="852000" />
+      <workItem from="1682168356776" duration="13134000" />
+      <workItem from="1682254096051" duration="3176000" />
+      <workItem from="1682339682097" duration="26225000" />
+      <workItem from="1682455681871" duration="25015000" />
+      <workItem from="1682686788542" duration="7525000" />
+      <workItem from="1682796751631" duration="9865000" />
+      <workItem from="1682862373422" duration="11210000" />
+      <workItem from="1682890580416" duration="1746000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1681248772442</created>

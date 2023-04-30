@@ -1,12 +1,20 @@
-<div class="card">
+{% extends 'baseclient.html.twig' %}
 
-    <div class="card-body">
-        <h5 class="card-title">{{ ins.nom }}</h5>
-        <div class="card-title">
-            {{ ins.prix }}
-
-        </div>
-        <img src="{{ ins.photo }}" alt="" class="card-img-top">
-        <p ss="te text-muted">{{ ins.description }}</p>
+{% block body %}
+    <div style="margin-top:150px;">
     </div>
-</div>
+
+
+    <h1>{{ instrument.nom }}</h1>
+    {% set file_name = instrument.photo|split('/')|last %}
+    <img class="card-img-top" src="{{ asset('images/products/' ~ file_name) }}" alt="{{ instrument.nom }}" style="width: 600px;
+    height: 400px;">
+    <p>{{ instrument.prix }}D</p>
+     <h2>Description</h2>
+    <p>{{ instrument.description }}</p>
+
+
+
+    <div style="margin-bottom:800px;">
+    </div
+{% endblock %}

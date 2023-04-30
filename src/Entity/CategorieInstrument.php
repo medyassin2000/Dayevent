@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CategorieInstrumentRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\component\Serializer\Annotation\Groups ;
 
 
 #[ORM\Entity(repositoryClass:CategorieInstrumentRepository::class)]
@@ -13,18 +14,23 @@ class CategorieInstrument
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups("categorieInstrument")]
+
     private ?int $id = null;
 
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message:"Entrer le nom")]
     #[Assert\Length(min:5,minMessage:"Le nom doit etre supérieur a 5 charactére")]
+    #[Groups("categorieInstrument")]
 
     private ?string $nomCategorie ;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message:"Entrer la description")]
     #[Assert\Length(min:5,minMessage:"Le nom doit etre supérieur a 5 charactére")]
+    #[Groups("categorieInstrument")]
+
 
     private ?string $description = null;
 

@@ -1,0 +1,77 @@
+{% extends 'back.html.twig' %}
+{% block content %}
+    <header class="section-header">
+        <div id="google_translate_element"></div>
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'fr'}, 'google_translate_element');
+            }
+        </script>
+
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script></p>
+    </header>
+    <a href="{{ path('app_instruments_new') }}" class="btn btn-primary">Ajouter</a>
+    <div class="card">
+    <div class="card-body">
+    <h1 class="card-title">Contrats Véhicule</h1>
+
+    <div class="card-body">
+    <div>
+        <input type="text" id="search" placeholder="Recherche par marque...">
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#search').keyup(function() {
+                var query = $(this).val();
+                $.ajax({
+                    url: "{{ path('search_contrat') }}",
+                    type: "POST",
+                    data: {query: query},
+                    success: function(data) {
+                        $('#results').html(data);
+                        $('#results').css('width', '100%');
+                        $('#results').css('position', 'static');
+                    }
+                });
+            });
+        });
+    </script>
+    <table class="table table-striped table-hover" >
+        <thead>
+        <tr>
+            <th>IdInstrument</th>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Photo</th>
+            <th>Description</th>
+            <th>nomCategorie</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody id="search_tab">
+        {% for instrument in instruments %}
+            <tr>
+                <td>{{ instrument.idInstrument }}</td>
+                <td>{{ instrument.nom }}</td>
+                <td>{{ instrument.prix }}</td>
+                <td>{{ instrument.photo }}</td>
+
+                <td>{{ instrument.description }}</td>
+
+                <td>{{ instrument.idCategorie.nomCategorie }}</td>
+
+                <td>
+                    <a  href="{{ path('app_instruments_show', {'idInstrument': instrument.idInstrument}) }}"><button type="button" class="btn btn-dark">afficher</button></a>
+                    <a  href="{{ path('app_instruments_edit', {'idInstrument': instrument.idInstrument}) }}"><button type="button" class="btn btn-dark">modifier</button></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}

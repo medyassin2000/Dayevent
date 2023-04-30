@@ -1,0 +1,35 @@
+{% if pagination.haveToPaginate %}
+    <ul class="pagination">
+        {% if pagination.hasPrevious %}
+            <li class="page-item">
+                <a href="{{ pagination.firstPagePath }}" class="page-link">{{ '<<' }}</a>
+            </li>
+            <li class="page-item">
+                <a href="{{ pagination.previousPagePath }}" class="page-link">{{ '<' }}</a>
+            </li>
+        {% endif %}
+        {% for page in pagination.pages %}
+            {% if page is same as(pagination.current) %}
+                <li class="page-item active">
+                    <span class="page-link">{{ page }}</span>
+                </li>
+            {% elseif page in pagination.visiblePages %}
+                <li class="page-item">
+                    <a href="{{ page.path }}" class="page-link">{{ page }}</a>
+                </li>
+            {% elseif pagination.currentPageOffset - page.offset is divisible by(pagination.pagesInRange) %}
+                <li class="page-item">
+                    <span class="page-link">...</span>
+                </li>
+            {% endif %}
+        {% endfor %}
+        {% if pagination.hasNext %}
+            <li class="page-item">
+                <a href="{{ pagination.nextPagePath }}" class="page-link">{{ '>' }}</a>
+            </li>
+            <li class="page-item">
+                <a href="{{ pagination.lastPagePath }}" class="page-link">{{ '>>' }}</a>
+            </li>
+        {% endif %}
+    </ul>
+{% endif %}

@@ -1,10 +1,51 @@
 {% extends 'baseclient.html.twig' %}
 {% block body %}
+    <!-- ======= Breadcrumbs ======= -->
+    <div style="margin-top:150px;">
+
+    </div>
+    <!-- About Pic Begin -->
+    <div class="about-pic">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 p-0">
+                            <img src="{{ asset ('frontend/img/about/ap-1.jpg') }}" alt="">
+                            <img src="{{ asset('frontend/img/about/ap-5.jpg') }}" alt="">
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 p-0">
+                            <img src="{{ asset('frontend/img/about/ap-3.jpg') }}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-8 p-0">
+                            <img src="{{ asset('frontend/img/about/ap-4.jpg') }}" alt="">
+                    </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 p-0">
+                            <img src="{{ asset('frontend/img/about/ap-5.jpg') }}" alt="">
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 p-0">
+                            <img src="{{ asset('frontend/img/about/ap-6.jpg') }}" alt="">
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 p-0">
+                            <img src="{{ asset('frontend/img/about/ap-7.jpg') }}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About Pic End -->
+
     <section id="breadcrumbs" class="breadcrumbs">
         <div class="container">
 
-            <div class="d-flex justify-content-between align-items-center">
-                <h2 style="height: 80px">Ajouter un instrument</h2>
+            <div style="margin-left: 370px;" class="d-flex justify-content-between align-items-center">
+                <h2>Ajouter un instrument</h2>
 
             </div>
 
@@ -12,66 +53,53 @@
     </section><!-- End Breadcrumbs -->
     <div style="display:flex; align-items:center;justify-content: center ;  margin-bottom: 100px" >
 
-        <div class="row mt-5 justify-content-center" data-aos="fade-up">
-            <div class="col-lg-10">
+    <div class="row mt-5 justify-content-start"style="margin-left:650px;" data-aos="fade-up">
+        <div class="col-lg-5">
 
-                {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
-
-
-                <div class="row">
-
-                    <div class="col-md-6 form-group" style="margin-bottom: 11px"  >
-                        {{ form_label(form.nom, null, {'label': 'Nom'}) }}
-                        {{ form_widget(form.nom,{'attr':{'class':'form-control'}}) }}
-                        {{ form_errors(form.nom) }}
-
-                    </div>
-                    <div class="form-group mt-3">
-                        {{ form_label(form.prix , null, {'label': 'Prix '}) }}
-                        {{ form_widget(form.prix ,{'attr':{'class':'form-control'}}) }}
-                        {{ form_errors(form.prix ) }}
+            {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
 
 
-                    </div>
-                    <div class="form-group mt-3">
-                        {{ form_label(form.photo, null, {'label': 'photo '}) }}
-                        {{ form_widget(form.photo ,{'attr':{'class':'form-control'}}) }}
-                        {{ form_errors(form.photo) }}
+            <div class="row">
+
+                <div class="col-md-10 form-group" style="margin-bottom: 11px"  >
+                    {{ form_label(form.nom, null, {'label': 'Nom'}) }}
+                    {{ form_widget(form.nom,{'attr':{'class':'form-control'}}) }}
+                    {{ form_errors(form.nom) }}
+
+                </div>
+                <div class="col-md-10 form-group" style="margin-bottom: 11px"  >
+                    {{ form_label(form.prix , null, {'label': 'Prix '}) }}
+                    {{ form_widget(form.prix ,{'attr':{'class':'form-control'}}) }}
+                    {{ form_errors(form.prix ) }}
 
 
-                    </div>
+
                     <div class="form-group mt-3">
                         {{ form_label(form.description , null, {'label': 'Description '}) }}
                         {{ form_widget(form.description ,{'attr':{'class':'form-control'}}) }}
                         {{ form_errors(form.description ) }}
+                        <div class="form-group mt-3">
+                            {{ form_label(form.idCategorie , null, {'label': 'Categorie '}) }}
+                            {{ form_widget(form.idCategorie ,{'attr':{'class':'form-control'}}) }}
+                            {{ form_errors(form.idCategorie) }}
 
+
+
+                        </div>
 
                     </div>
                 </div>
-                <div class="form-group mt-3">
-                    {{ form_label(form.idCategorie , null, {'label': 'idCategorie '}) }}
-                    {{ form_widget(form.idCategorie ,{'attr':{'class':'form-control'}}) }}
-                    {{ form_errors(form.idCategorie) }}
-
-
-
-                </div>
-                <div class="form-group mt-3">
-                    {{ form_label(form.idUtilisateur , null, {'label': 'Id utilisateur '}) }}
-                    {{ form_widget(form.idUtilisateur ,{'attr':{'class':'form-control'}}) }}
-                    {{ form_errors(form.idUtilisateur )}}
-
-
-                </div>
 
 
 
 
 
-                <div class="text-center" >
+
+
+                <div class="text-" >
 
                     <button type="submit" style="background-color: #1bbd36 ;
-                     padding: 10px 24px ;
+                     padding: 10px 20px ;
                      color: #fff;
                      transition: 0.4s;
                      border: 0;
@@ -87,5 +115,12 @@
         </div>
 
     </div>
+    </div>
 
-{% endblock %}
+    <div style="margin-bottom:600px;">
+    </div>
+
+
+
+
+{% endblock  %}

@@ -2,14 +2,35 @@
 
 {% block title %}Instruments index{% endblock %}
 
+
 {% block body %}
 <div class="card" align="center" style="margin-left: 20px">
 
 
-
     <h1>Instruments </h1>
-
-    <table class="table table-striped table-hover">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>$(document).ready(function() {
+            // Function to trigger search when search fields change
+            function search() {
+                var searchTerm = $('#search').val();
+                $.ajax({
+                    url: '{{ path('searche') }}',
+                    type: 'GET',
+                    data: {
+                        q: searchTerm
+                    },
+                    success: function(response) {
+                        $('tbody').html(response);
+                    }
+                });
+            }
+            // Trigger search when search field changes
+            $('#search').on('input', function() {
+                search();
+            });
+        });
+    </script>
+    <table class="table table-striped table-hover" >
         <thead>
             <tr>
                 <th>IdInstrument</th>
@@ -21,7 +42,7 @@
                 <th>actions</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="search_tab">
         {% for instrument in instruments %}
             <tr>
                 <td>{{ instrument.idInstrument }}</td>

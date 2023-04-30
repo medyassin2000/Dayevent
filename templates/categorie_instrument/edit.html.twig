@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Edit CategorieInstrument</h1>
 
-    {{ include('categorie_instrument/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('categorie_instrument/new.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_categorie_instrument_index') }}">back to list</a>
+    <a href="{{ path('app_categorie_instrument_index') }}"><button type="button" class="btn btn-primary">retour</button></a>
 
     {{ include('categorie_instrument/_delete_form.html.twig') }}
 {% endblock %}

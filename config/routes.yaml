@@ -4,14 +4,16 @@
 app_instrument_frontend :
   path: /frontend
   controller: App\Controller\InstrumentsController::frontIndex
-app_instrument_instrument :
-  path: /about
-  controller: App\Controller\InstrumentsController::instrumentIndex
-app_instrument_ajout :
+
+app_instrument_ajouter :
   path: /ajout
   controller: App\Controller\InstrumentsController::ajout
 app_instrument_card :
   path: /card
   controller: App\Controller\InstrumentsController::card
+app_instrument_detail :
+  path: /detail/{idInstrument}
+  controller: App\Controller\InstrumentsController::detail
+
 
 

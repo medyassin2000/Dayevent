@@ -105,12 +105,13 @@ class Instruments
 
         return null;
     }
-    public function setPhoto(string $photo): self
+    public function setPhoto(?string $photo): self
     {
-        $this->photo = $photo;
+        $this->photo = $photo ?? '';
 
         return $this;
     }
+
 
 
     public function getDescription(): ?string

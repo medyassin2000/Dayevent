@@ -1,0 +1,62 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}CategorieInstrument index{% endblock %}
+
+{% block body %}
+    <div class="card" align="center" style="margin-left: 20px">
+    <div class="card-body">
+        <div>
+            <input type="text" id="search" placeholder="Recherche par marque...">
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#search').keyup(function() {
+                    var query = $(this).val();
+                    $.ajax({
+                        url: "{{ path('search_contrat') }}",
+                        type: "POST",
+                        data: {query: query},
+                        success: function(data) {
+                            $('#results').html(data);
+                            $('#results').css('width', '100%');
+                            $('#results').css('position', 'static');
+                        }
+                    });
+                });
+            });
+        </script>
+
+        <h1>Categorie</h1>
+
+        <table id="results" class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomCategorie</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for categorie_instrument in categorie_instruments %}
+                <tr>
+                    <td>{{ categorie_instrument.id }}</td>
+                    <td>{{ categorie_instrument.nomCategorie }}</td>
+                    <td>{{ categorie_instrument.description }}</td>
+                    <td>
+                        <a href="{{ path('app_categorie_instrument_show', {'id': categorie_instrument.id}) }}"><button type="button" class="btn btn-dark">afficher</button></a>
+                        <a href="{{ path('app_categorie_instrument_edit', {'id': categorie_instrument.id}) }}"><button type="button" class="btn btn-dark">modifier</button></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_categorie_instrument_new') }}"><button type="button" class="btn btn-success">Create</button></a>
+    </div>
+{% endblock %}
