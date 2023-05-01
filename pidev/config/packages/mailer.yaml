@@ -1,9 +1,0 @@
-framework:
-    mailer:
-        dsn: '%env(MAILER_DSN)%'
-
-# configure mailer transports
-# https://symfony.com/doc/current/reference/configuration/swiftmailer.html#transport-specific-configuration
-swiftmailer:
-    url: '%env(MAILER_DSN)%'
-
