@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>{{ title }}</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			line-height: 1.4;
+			margin: 0;
+			padding: 0;
+		}
+		table {
+			width: 100%;
+			border-collapse: collapse;
+		}
+		th, td {
+			padding: 8px;
+			border: 1px solid #ccc;
+			text-align: left;
+		}
+		th {
+			background-color: #f2f2f2;
+		}
+	</style>
+</head>
+<body>
+	<h1>{{ title }}</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Date</th>
+				<th>Titre</th>
+				<th>Description</th>
+				<th>Tel</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for reclamation in reclamations %}
+				<tr>
+					<td>{{ reclamation.idRec }}</td>
+					<td>{{ reclamation.dateRec|date('Y-m-d') }}</td>
+					<td>{{ reclamation.titre }}</td>
+					<td>{{ reclamation.description }}</td>
+					<td>{{ reclamation.tel }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</body>
+</html>

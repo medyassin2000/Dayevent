@@ -1,0 +1,60 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Reclamation index{% endblock %}
+
+{% block body %}
+    <h1>La table des Reclamations :</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdRec</th>
+                <th>DateRec</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Tel</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+                <td>{{ reclamation.idRec }}</td>
+                <td>{{ reclamation.dateRec ? reclamation.dateRec|date('Y-m-d') : '' }}</td>
+                <td>{{ reclamation.titre }}</td>
+                <td>{{ reclamation.description }}</td>
+                <td>{{ reclamation.tel }}</td>
+                <td>
+                    <a href="{{ path('app_reclamation_show', {'idRec': reclamation.idRec}) }}">show</a>
+                    <a href="{{ path('app_reclamation_edit', {'idRec': reclamation.idRec}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Pas de reclamations trouvées</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_reclamation_new') }}">Create new</a>
+     <a href="{{ path('reclamation_show') }}" class="btn btn-primary1">Tri par titre</a>
+
+<script>
+  function sortReclamations() {
+            var rows = document.querySelectorAll("table tbody tr");
+            var arr = [];
+            for (var i = 0; i < rows.length; i++) {
+                arr.push(rows[i]);
+            }
+            arr.sort(function(a, b) {
+                var aDate = new Date(a.cells[0].textContent);
+                var bDate = new Date(b.cells[0].textContent);
+                return aDate - bDate;
+            });
+            for (var i = 0; i < arr.length; i++) {
+                document.querySelector("table tbody").appendChild(arr[i]);
+            }
+        }
+</script>
+{% endblock %}
